@@ -1,17 +1,19 @@
-import "./App.scss";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
-import ListQuestions from "./components/ListQuestions/ListQuestions";
-import UserBtnPanel from "./components/UserBtnPanel/UserBtnPanel";
-import UserInfo from "./components/UserInfo/UserInfo";
+import UserPage from "./pages/UserPage";
+
+import "./App.scss";
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <UserInfo />
-      <UserBtnPanel />
-      <ListQuestions />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/user:id" element={<UserPage />}/>
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
