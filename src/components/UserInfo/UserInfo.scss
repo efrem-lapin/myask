@@ -1,0 +1,50 @@
+@import "../../sass/vars.scss";
+
+.user_info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0px;
+}
+
+.user_info__avatar {
+  height: 70px;
+  width: 70px;
+  background-color: $primary;
+  border-radius: 50%;
+  margin-right: 28px;
+}
+
+.user_info__side {
+  display: flex;
+  align-items: center;
+}
+.user_info__name {
+  font-size: 20px;
+  line-height: 30px;
+  color: $primary;
+  font-weight: 600;
+}
+
+.user_info__status {
+  font-weight: 400;
+  font-size: 16px;
+  color: $primary;
+}
+
+.user_info__counter {
+  display: flex;
+  flex-direction: column;
+  justify-self: start;
+  align-items: center;
+
+  &:not(:last-child) {
+    margin-right: 30px;
+  }
+}
+
+.user_info__num {
+  font-size: 28px;
+  line-height: 28px;
+  font-weight: 500;
+}

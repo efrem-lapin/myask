@@ -1,0 +1,13 @@
+@import "../../sass/vars.scss";
+
+.header {
+  height: 50px;
+  background-color: $primary;
+}
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}

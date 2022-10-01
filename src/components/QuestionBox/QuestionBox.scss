@@ -1,0 +1,19 @@
+@import "../../sass/vars.scss";
+
+.question_box {
+  padding: 10px;
+  background-color: $primary;
+  border-radius: 6px;
+
+  &:not(:last-child) {
+    margin-bottom: 12px;
+  }
+}
+
+.question_box__question {
+  color: $primary-oposite;
+}
+
+.question_box__answer {
+  color: $primary-oposite;
+}

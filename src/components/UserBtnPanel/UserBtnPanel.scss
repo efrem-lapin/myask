@@ -1,0 +1,22 @@
+@import "../../sass/vars.scss";
+
+.user_btn_panel {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 26px;
+}
+
+.user_btn_panel__btn {
+  padding: 10px 42px;
+  background-color: $primary;
+  color: $primary-oposite;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.user_btn_panel__btn_long {
+  padding: 10px 86px;
+  margin-right: 30px;
+}
