@@ -1,14 +1,15 @@
 import "./UserInfo.scss";
 
-const UserInfo = () => {
+const UserInfo = ({ user }) => {
+  console.log(user)
   return (
     <div className="container">
       <div className="user_info">
         <div className="user_info__side">
           <div className="user_info__avatar"></div>
           <div className="user_info__text">
-            <div className="user_info__name">Никнейм</div>
-            <div className="user_info__status">Статус</div>
+            <div className="user_info__name">{user.username}</div>
+            <div className="user_info__status">{user.status}</div>
           </div>
         </div>
         <div className="user_info__side">

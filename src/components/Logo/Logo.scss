@@ -1,5 +1,8 @@
+@import "../../sass/vars.scss";
+
 .logo {
-  width: 50px;
-  height: 50px;
-  background-color: #10100f;
+  font-weight: 500;
+  color: $primary-oposite;
+  cursor: pointer;
+  text-decoration: none;
 }

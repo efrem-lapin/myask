@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
+
 import "./SignUpPanel.scss";
 
 const SignUpPanel = () => {
   return (
     <div className="sign_up">
-      <button className="sign_up__link">Войти</button>
-      <button className="sign_up__btn">Зарегистрироваться</button>
+      <Link to="/sign"><button className="sign_up__btn">Зарегистрироваться</button></Link>
     </div>
   );
 };
