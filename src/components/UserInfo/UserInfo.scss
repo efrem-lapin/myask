@@ -8,8 +8,8 @@
 }
 
 .user_info__avatar {
-  height: 70px;
-  width: 70px;
+  height: 75px;
+  width: 75px;
   background-color: $primary;
   border-radius: 50%;
   margin-right: 28px;
@@ -22,14 +22,14 @@
 .user_info__name {
   font-size: 20px;
   line-height: 30px;
-  color: $primary;
+  color: $primary-text;
   font-weight: 600;
 }
 
 .user_info__status {
   font-weight: 400;
   font-size: 16px;
-  color: $primary;
+  color: $auxiliary-text;
 }
 
 .user_info__counter {

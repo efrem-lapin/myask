@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { registration } from "../../actions/user";
 
+import "./SignForm.scss";
+
 const SignForm = ({ buttonText }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');

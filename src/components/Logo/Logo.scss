@@ -1,8 +1,18 @@
 @import "../../sass/vars.scss";
 
 .logo {
-  font-weight: 500;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-weight: 700;
+  font-size: 24px;
   color: $primary-oposite;
   cursor: pointer;
   text-decoration: none;
+}
+
+.logo__img {
+  width: 40px;
+  height: 40px;
+  margin-right: 4px;
 }
