@@ -12,7 +12,7 @@ const SignPage = () => {
           <button className={typeSign ? "sign__button sign__button_active" : "sign__button"} onClick={() => setTypeSign(1)}>Регистрация</button>
         </div>
         <div className="sign__box">
-            {!typeSign ? <SignForm buttonText="Войти" /> : <SignForm buttonText="Зарегистрироваться" />}
+            {!typeSign ? <SignForm type="login" /> : <SignForm type="reg" />}
         </div>
       </div>
     </div>

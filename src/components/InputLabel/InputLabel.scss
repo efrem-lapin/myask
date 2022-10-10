@@ -1,0 +1,35 @@
+@import "../../sass/vars.scss";
+
+.inputLabel {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-bottom: 16px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.inputLabel__text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 15px;
+  margin-bottom: 6px;
+  color: $auxiliary-text;
+}
+
+.inputLabel__input {
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: $light-bg;
+  border: 1px solid $border-line;
+  border-radius: 8px;
+  color: $auxiliary-text;
+
+  &::placeholder {
+    color: $placeholder-text;
+  }
+}

@@ -1,46 +1,50 @@
 import { useState } from "react";
-import { registration } from "../../actions/user";
+import { regUser, loginUser } from "../../actions/user";
+import { InputLabel } from "../InputLabel/InputLabel";
 
 import "./SignForm.scss";
 
-const SignForm = ({ buttonText }) => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  
+const SignForm = ({ type }) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const textButton = {
+    reg: "Зарегистрироваться",
+    login: "Войти",
+  };
+
   return (
     <form className="form">
-      {buttonText === "Зарегистрироваться" ? (
-        <label className="form__label">
-          <span className="form__text">Имя</span>
-          <input
-            className="form__input"
-            type="text/"
-            placeholder="Введите имя"
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label>
-      ) : null}
-      <label className="form__label">
-        <span className="form__text">E-mail</span>
-        <input
-          className="form__input"
-          type="email"
-          placeholder="Введите e-mail"
-          onChange={(e) => setEmail(e.target.value)}
+      {type === "reg" && (
+        <InputLabel
+          labelText="Имя"
+          type="text"
+          placeholder="Введите имя"
+          setValue={setName}
         />
-      </label>
-      <label className="form__label">
-        <span className="form__text">Пароль</span>
-        <input
-          className="form__input"
-          type="password"
-          placeholder="Введите пароль"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </label>
-      <button className="form__button" onClick={() => registration(name, email, password)}>
-        {buttonText}
+      )}
+      <InputLabel
+        labelText="E-mail"
+        type="text"
+        placeholder="Введите e-mail"
+        setValue={setEmail}
+      />
+      <InputLabel
+        labelText="Пароль"
+        type="password"
+        placeholder="Введите пароль"
+        setValue={setPassword}
+      />
+      <button
+        className="form__button"
+        onClick={
+          type === "login"
+            ? (e) => loginUser(e, email, password)
+            : (e) => regUser(e, name, email, password)
+        }
+      >
+        {textButton[type]}
       </button>
     </form>
   );

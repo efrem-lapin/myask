@@ -1,9 +1,10 @@
 import axios from "axios";
 
-export const registration = async (username, email, password) => {
+export const regUser = async (e, username, email, password) => {
+  e.preventDefault();
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/registration",
+      "http://localhost:3001/api/reg",
       {
         username,
         email,
@@ -17,17 +18,18 @@ export const registration = async (username, email, password) => {
   }
 };
 
-export const authorization = async (email, password) => {
+export const loginUser = async (e, email, password) => {
+  e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/authorization",
+        "http://localhost:3001/api/login",
         {
           email,
           password,
         }
       );
   
-      alert(response.data.message)
+      console.log(response.data)
     } catch (error) {
       console.error(error);
     }

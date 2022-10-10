@@ -7,36 +7,6 @@
   align-items: flex-start;
 }
 
-.form__label {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  margin-bottom: 16px;
-}
-
-.form__text {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 15px;
-  margin-bottom: 6px;
-  color: $auxiliary-text;
-}
-
-.form__input {
-  width: 100%;
-  padding: 16px;
-  font-size: 16px;
-  font-weight: 500;
-  background-color: $light-bg;
-  border: 1px solid $border-line;
-  border-radius: 8px;
-  color: $auxiliary-text;
-
-  &::placeholder {
-    color: $placeholder-text;
-  }
-}
-
 .form__button {
   padding: 16px 16px;
   font-size: 18px;
@@ -44,4 +14,8 @@
   border-radius: 6px;
   background-color: $primary;
   color: $primary-oposite;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 }
