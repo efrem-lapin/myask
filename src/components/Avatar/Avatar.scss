@@ -1,0 +1,14 @@
+@import "../../sass/vars.scss";
+
+.avatar {
+  height: 65px;
+  width: 65px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: $primary;
+}
+
+.avatar__img {
+  height: 100%;
+  width: 100%;
+}

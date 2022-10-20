@@ -1,9 +1,15 @@
-const Avatar = () => {
+import "./Avatar.scss"
+
+const Avatar = ({src="./assets/img/defaultAvatar.png"}) => {
   return (
     <div className="avatar">
-      <img className="avatar_img" alt="аватар" src="#" />
+      <img
+        className="avatar__img"
+        alt="аватар"
+        src="./assets/img/defaultAvatar.png"
+      />
     </div>
-  )
+  );
 };
 
 export default Avatar
