@@ -1,3 +1,4 @@
+import Avatar from "../Avatar/Avatar";
 import "./UserInfo.scss";
 
 const UserInfo = ({ user }) => {
@@ -6,7 +7,7 @@ const UserInfo = ({ user }) => {
     <div className="container">
       <div className="user_info">
         <div className="user_info__side">
-          <div className="user_info__avatar"></div>
+          <Avatar/>
           <div className="user_info__text">
             <div className="user_info__name">{user?.username}</div>
             <div className="user_info__status">{user?.status}</div>
