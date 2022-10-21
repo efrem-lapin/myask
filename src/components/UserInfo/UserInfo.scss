@@ -5,6 +5,17 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 0px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  .avatar {
+    margin-right: 0; 
+    margin-bottom: 10px;
+    width: 100px;
+    height: 100px;
+  }
 }
 
 .user_info__avatar {

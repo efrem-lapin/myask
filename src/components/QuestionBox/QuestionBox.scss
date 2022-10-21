@@ -2,18 +2,39 @@
 
 .question_box {
   padding: 10px;
-  background-color: $primary;
-  border-radius: 6px;
+  border-bottom: 1px solid $primary;
+  display: flex;
+  justify-content: start;
+  align-items: flex-start;
 
   &:not(:last-child) {
     margin-bottom: 12px;
   }
+
+  .avatar {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+  }
 }
 
 .question_box__question {
-  color: $primary-oposite;
+  font-size: 16px;
+  font-weight: 400;
+  color: $primary-text;
 }
 
 .question_box__answer {
   color: $primary-oposite;
+}
+
+.question_box__text {
+  margin-left: 16px;
+}
+
+.question_box__name {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 20px;
+  margin-bottom: 4px;
 }
