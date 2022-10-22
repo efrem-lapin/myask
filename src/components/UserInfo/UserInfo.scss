@@ -19,6 +19,13 @@
   }
 }
 
+.question_box__user_info {
+  display: flex;
+  justify-content: start;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
 .user_info__side {
   display: flex;
   align-items: center;
@@ -86,4 +93,14 @@
   @media (max-width: 768px) {
     font-size: 16px;
   }
+}
+
+.question_box__answer {
+  padding: 15px 16px 15px 16px;
+  background-color: $primary;
+  color: $primary-oposite;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16;
+  border-radius: 12px;
 }
