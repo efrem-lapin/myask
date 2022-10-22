@@ -2,15 +2,15 @@ import Avatar from "../Avatar/Avatar";
 import "./UserInfo.scss";
 
 const UserInfo = ({ user }) => {
-  console.log(user)
+  const defaultUser = {name: "Имя Пользователя", status: "Тут позьзователь будет устанавливать статус"}
   return (
     <div className="container">
       <div className="user_info">
         <div className="user_info__side">
           <Avatar/>
           <div className="user_info__text">
-            <div className="user_info__name">{user?.username}</div>
-            <div className="user_info__status">{user?.status}</div>
+            <div className="user_info__name">{user?.username || defaultUser.name}</div>
+            <div className="user_info__status">{user?.status || defaultUser.status}</div>
           </div>
         </div>
         <div className="user_info__side">
