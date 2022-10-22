@@ -10,6 +10,7 @@ const QuestionBox = ({ userInfo }) => {
           <h3 className="question_box__name">{userInfo.name}</h3>
           <p className="question_box__question">{userInfo.question}</p>
         </div>
+        <div className="question_box__answer"></div>
       </div>
       <div className="question_box__answer">{userInfo.answer}</div>
     </div>
