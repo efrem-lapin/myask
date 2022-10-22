@@ -8,14 +8,14 @@
 
   @media (max-width: 768px) {
     flex-direction: column;
-  }
 
-  .avatar {
-    margin-right: 0;
-    margin-bottom: 12px;
-    width: 100px;
-    height: 100px;
-    flex-shrink: 0;
+    .avatar {
+      margin-right: 0;
+      margin-bottom: 12px;
+      width: 100px;
+      height: 100px;
+      flex-shrink: 0;
+    }
   }
 }
 
