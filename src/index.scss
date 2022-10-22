@@ -44,7 +44,7 @@ button {
   }
 
   @media (max-width: 320px) {
-    width: 260px;
+    width: 280px;
   }
 }
 
@@ -94,3 +94,6 @@ button {
   border-radius: 8px;
 }
 
+.section__title {
+  padding: 12px 0;
+}

@@ -9,10 +9,19 @@
   color: $primary-oposite;
   cursor: pointer;
   text-decoration: none;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
 }
 
 .logo__img {
   width: 40px;
   height: 40px;
   margin-right: 4px;
+
+  @media (max-width: 768px) {
+    width: 32px;
+    height: 32px;
+  }
 }

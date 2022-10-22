@@ -9,7 +9,7 @@ const SignUpPanel = () => {
       <Link to="/sign">
         <button className="sign_up__btn">
           {isMobile ? (
-            <img className="sign_up__img" src="./assets/img/signup.png" alt="sing icon" />
+            <img className="sign_up__img" src="./assets/img/defaultAvatar.png" alt="sing icon" />
           ) : (
             "Зарегистрироваться"
           )}

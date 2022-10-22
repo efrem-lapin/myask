@@ -10,17 +10,18 @@ const UserPage = () => {
   const id = params.id;
 
   React.useEffect(() => {
-    fetch(`http://localhost:5000/api/user${id}`)
+    fetch(`http://localhost:3001/api/user${id}`)
     .then(data => data.json())
     .then(data => setUser(data[0]))
   }, [])
 
   return (
-    <>
+    <div className="container">
       <UserInfo user={user}/>
       <UserBtnPanel />
+      <h2 className="section__title">Ответы:</h2>
       <ListQuestions />
-    </>
+    </div>
   );
 };
 
