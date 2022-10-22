@@ -47,21 +47,16 @@
   }
 
   @media (max-width: 768px) {
-    padding: 4px 0px;
-    background-color: transparent;
-
-    &:hover {
-      background-color: transparent;
-    }
-  
-    &:active {
-      box-shadow: none;
-      background-color: transparent;
-    }
+    display: none;
   }
 }
 
 .sign_up__img {
+  display: none;
   width: 32px;
   height: 32px;
+
+  @media (max-width: 768px) {
+    display: inline-block;
+  }
 }
