@@ -17,6 +17,4 @@ const QuestionField = () => {
   );
 }
 
-
-
 export default QuestionField

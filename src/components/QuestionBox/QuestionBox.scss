@@ -3,7 +3,6 @@
 .question_box {
   padding: 10px;
   border-bottom: 1px solid $primary;
-  
 
   &:not(:last-child) {
     margin-bottom: 12px;
@@ -16,21 +15,17 @@
   }
 }
 
+.question_box__user_info {
+  display: flex;
+  justify-content: start;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
 .question_box__question {
   font-size: 16px;
   font-weight: 400;
   color: $primary-text;
-}
-
-.question_box__answer {
-  color: $primary-oposite;
-  padding: 15px 16px 15px 16px;
-  background-color: $primary;
-  color: $primary-oposite;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 16;
-  border-radius: 12px;
 }
 
 .question_box__text {
@@ -42,4 +37,15 @@
   font-weight: 600;
   line-height: 20px;
   margin-bottom: 4px;
+}
+
+.question_box__answer {
+  position: relative;
+  background-color: $primary;
+  padding: 16px 15px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  border-radius: 12px;
+  color: $primary-oposite;
 }
