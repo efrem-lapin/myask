@@ -3,9 +3,7 @@
 .question_box {
   padding: 10px;
   border-bottom: 1px solid $primary;
-  /*display: flex;
-  justify-content: start;
-  align-items: flex-start;*/
+  
 
   &:not(:last-child) {
     margin-bottom: 12px;
@@ -26,6 +24,13 @@
 
 .question_box__answer {
   color: $primary-oposite;
+  padding: 15px 16px 15px 16px;
+  background-color: $primary;
+  color: $primary-oposite;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16;
+  border-radius: 12px;
 }
 
 .question_box__text {
