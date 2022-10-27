@@ -12,7 +12,7 @@ export const regUser = async (e, username, email, password) => {
       }
     );
 
-    alert(response.data.message)
+    console.log(response.data.message);
   } catch (error) {
     console.error(error);
   }
@@ -28,8 +28,8 @@ export const loginUser = async (e, email, password) => {
           password,
         }
       );
-  
-      console.log(response.data)
+
+      localStorage.setItem('token', response.data.accessToken);
     } catch (error) {
       console.error(error);
     }

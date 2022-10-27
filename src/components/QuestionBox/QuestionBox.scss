@@ -3,9 +3,6 @@
 .question_box {
   padding: 10px;
   border-bottom: 1px solid $primary;
-  // display: flex;
-  // justify-content: start;
-  // align-items: flex-start;
 
   &:not(:last-child) {
     margin-bottom: 12px;

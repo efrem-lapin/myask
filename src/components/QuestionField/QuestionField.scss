@@ -1,0 +1,32 @@
+@import "../../sass/vars.scss";
+
+.question_field {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 12px;
+  border-radius: 12px;
+  background-color: $primary;
+}
+
+.question_field__input {
+    width: 100%;
+    height: auto;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    border: none;
+}
+
+.question_field__button {
+    padding: 8px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    color: $primary-oposite;
+    background-color: $primary-oposite;
+    color: $primary;
+    cursor: pointer;
+}

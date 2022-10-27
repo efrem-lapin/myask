@@ -1,3 +1,4 @@
+import QuestionField from "../QuestionField/QuestionField";
 import "./UserBtnPanel.scss";
 
 const UserBtnPanel = () => {
@@ -9,6 +10,7 @@ const UserBtnPanel = () => {
         </button>
         <button className="user_btn_panel__btn">Подписаться</button>
       </div>
+      <QuestionField />
     </div>
   );
 };
