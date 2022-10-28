@@ -24,6 +24,7 @@ const UserSettings = () => {
           placeholder="Изменить пароль"
           setValue={null}
         />
+        <button className="form__button">Изменить</button>
       </form>
     </div>
   );
