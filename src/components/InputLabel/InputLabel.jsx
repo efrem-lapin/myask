@@ -15,3 +15,5 @@ export const InputLabel = ({labelText, type, placeholder, setValue}) => {
     </label>
   )
 }
+
+export default InputLabel;
