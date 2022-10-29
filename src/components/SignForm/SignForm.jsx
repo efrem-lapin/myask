@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { regUser, loginUser } from "../../actions/user";
 import { InputLabel } from "../InputLabel/InputLabel";
 import { useDispatch } from "react-redux";
@@ -12,6 +13,7 @@ const SignForm = ({ type }) => {
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
+  const nav = useNavigate();
 
   const textButton = {
     reg: "Зарегистрироваться",
@@ -19,9 +21,11 @@ const SignForm = ({ type }) => {
   };
 
   async function login(e, email, password) {
-    const res = await loginUser(e, email, password);
-    console.log(res);
-    dispatch(setUser(res.data))
+    const resId = await loginUser(e, email, password);
+    if (resId) {
+      dispatch(setUser({ id: resId }));
+      nav(`/user${resId}`);
+    }
   }
 
   return (
