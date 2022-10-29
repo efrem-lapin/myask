@@ -10,7 +10,7 @@ const UserPage = () => {
   const id = params.id;
 
   React.useEffect(() => {
-    fetch(`http://localhost:3001/api/user${id}`)
+    fetch(`${process.env.REACT_APP_HOST}/api/user${id}`)
     .then(data => data.json())
     .then(data => setUser(data[0]))
   }, [])

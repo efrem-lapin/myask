@@ -1,11 +1,10 @@
 import axios from "axios";
-import $api from "../http";
 
 export const regUser = async (e, username, email, password) => {
   e.preventDefault();
   try {
     const response = await axios.post(
-      "http://localhost:3001/api/reg",
+      `${process.env.REACT_APP_HOST}/api/reg`,
       {
         username,
         email,
@@ -22,8 +21,8 @@ export const regUser = async (e, username, email, password) => {
 export const loginUser = async (e, email, password) => {
   e.preventDefault();
     try {
-      const response = await $api.post(
-        "http://localhost:3001/api/login",
+      const response = await axios.post(
+        `${process.env.REACT_APP_HOST}/api/login`,
         {
           email,
           password,
@@ -31,6 +30,7 @@ export const loginUser = async (e, email, password) => {
       );
 
       localStorage.setItem('token', response.data.accessToken);
+      return response.data.id;
     } catch (error) {
       console.error(error);
     }
