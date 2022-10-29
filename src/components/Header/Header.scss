@@ -1,8 +1,9 @@
 @import "../../sass/vars.scss";
 
 .header {
-  height: 60px;
+  height: 50px;
   background-color: $primary;
+  border-bottom: 1px solid #979797;
 }
 
 .header__inner {

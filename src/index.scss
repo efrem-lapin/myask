@@ -4,16 +4,17 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Inter", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 body {
-  background-color: #f4f9fc;
+  background-color: #F8F9FA;
 }
 
 button {
   border: none;
   transition-duration: 0.3s;
+  border-radius: 16px;
 
   &:hover {
     background-color: lighten($primary, 20);
@@ -22,11 +23,6 @@ button {
   &:active {
     box-shadow: 0px 0px 30px -2px rgba(34, 60, 80, 0.2) inset;
     background-color: $primary;
-  }
-
-  &:focus {
-    outline: 4px solid $primary-mid;
-    transition-duration: 0s;
   }
 }
 
@@ -73,7 +69,7 @@ button {
 .sign__button {
   font-size: 16px;
   font-weight: 500;
-  padding: 16px 32px;
+  padding: 12px 24px;
   background-color: transparent;
   cursor: pointer;
   color: $auxiliary-text;
@@ -95,5 +91,21 @@ button {
 }
 
 .section__title {
-  padding: 12px 0;
+  padding: 24px 0;
+}
+
+.hide_desc {
+  display: none;
+}
+
+.hide_mobile {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.show_mobile {
+  @media (max-width: 768px) {
+    display: block;
+  }
 }

@@ -28,13 +28,13 @@
 }
 
 .sign_up__btn {
-  padding: 12px 16px;
+  padding: 8px 20px;
   font-size: 16px;
-  background-color: $primary-oposite;
+  background-color: $primary-second;
   border-radius: 6px;
   font-weight: 500;
   cursor: pointer;
-  color: $primary;
+  color: $primary-text;
   transition-duration: 0.3s;
 
   &:hover {
@@ -55,6 +55,7 @@
   display: none;
   width: 32px;
   height: 32px;
+  border-radius: 6px;
 
   @media (max-width: 768px) {
     display: inline-block;

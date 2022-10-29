@@ -32,8 +32,10 @@
 }
 
 .user_info__adaptive {
+  margin-right: 12px;
   @media (max-width: 768px) {
     flex-direction: column;
+    margin-right: 0;
   }
 }
 

@@ -14,10 +14,10 @@ const UserPage = () => {
     .then(data => data.json())
     .then(data => setUser(data[0]))
   }, [])
-
+  
   return (
     <div className="container">
-      <UserInfo user={user}/>
+      <UserInfo user={user}/> 
       <UserBtnPanel />
       <h2 className="section__title">Ответы:</h2>
       <ListQuestions />

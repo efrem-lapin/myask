@@ -5,28 +5,53 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 12px;
   border-radius: 12px;
-  background-color: $primary;
+
+  animation: showBlock 0.3s linear;
+
+  @media (max-width: 768px) {
+    padding: 4px 0;
+    margin-bottom: 24px;
+  }
 }
 
 .question_field__input {
     width: 100%;
     height: auto;
-    padding: 12px;
+    padding: 16px;
     margin-bottom: 10px;
     border-radius: 4px;
     font-size: 16px;
-    border: none;
+    line-height: 24px;
+    border: 1px solid $placeholder-text;
+    background-color: #F8F9FA;
+
+    ::placeholder {
+      color: $placeholder-text;
+    }
 }
 
 .question_field__button {
-    padding: 8px 24px;
+    padding: 16px 24px;
     border-radius: 8px;
     font-size: 16px;
     font-weight: 500;
     color: $primary-oposite;
-    background-color: $primary-oposite;
-    color: $primary;
+    background-color: $primary;
+    color: white;
     cursor: pointer;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+}
+
+@keyframes showBlock {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

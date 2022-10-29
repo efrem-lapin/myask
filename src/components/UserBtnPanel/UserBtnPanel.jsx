@@ -15,9 +15,10 @@ const UserBtnPanel = () => {
           >
           {isShowQF ? "Скрыть" : "Задать вопрос"}
         </button>
-        <button className="user_btn_panel__btn">Подписаться</button>
+        <button className="user_btn_panel__btn hide_mobile">Подписаться</button>
       </div>
       {isShowQF && <QuestionField />}
+      <button className="user_btn_panel__btn show_mobile hide_desc">Подписаться</button>
     </div>
   );
 };

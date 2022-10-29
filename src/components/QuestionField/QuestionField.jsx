@@ -12,8 +12,9 @@ const QuestionField = () => {
         className="question_field__input" 
         onChange={(e) => setQuestion(e.target.value)} 
         value={question}
+        placeholder="Задайте вопрос"
       />
-      <button className="question_field__button">Сбросить</button>
+      <button className="question_field__button">Спросить</button>
     </div>
   );
 }

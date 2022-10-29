@@ -1,4 +1,5 @@
 import axios from "axios";
+import $api from "../http";
 
 export const regUser = async (e, username, email, password) => {
   e.preventDefault();
@@ -12,7 +13,7 @@ export const regUser = async (e, username, email, password) => {
       }
     );
 
-    console.log(response.data.message);
+    alert(response.data.message);
   } catch (error) {
     console.error(error);
   }
@@ -21,7 +22,7 @@ export const regUser = async (e, username, email, password) => {
 export const loginUser = async (e, email, password) => {
   e.preventDefault();
     try {
-      const response = await axios.post(
+      const response = await $api.post(
         "http://localhost:3001/api/login",
         {
           email,

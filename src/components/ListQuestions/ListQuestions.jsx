@@ -1,5 +1,7 @@
 import QuestionBox from "../QuestionBox/QuestionBox";
 
+import "./ListQuestions.scss";
+
 const ListQuestions = () => {
   const list = [
     {
