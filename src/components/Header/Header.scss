@@ -11,4 +11,22 @@
   justify-content: space-between;
   align-items: center;
   height: 100%;
+  position: relative;
+}
+
+.account_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  overflow: hidden;
+
+  cursor: pointer;
+
+  .avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+  }
 }
