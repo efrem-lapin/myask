@@ -122,3 +122,12 @@ ul, ol {
 .form_setting {
   padding: 20px 0px;
 }
+
+.form__button {
+  padding: 12px 28px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  color: $primary-oposite;
+  background-color: $primary;
+}

@@ -1,6 +1,6 @@
 @import "../../sass/vars.scss";
 
-.user_info {
+.userInfo {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,30 +8,22 @@
 
   @media (max-width: 768px) {
     flex-direction: column;
-
-    .avatar {
-      margin-right: 0;
-      margin-bottom: 12px;
-      width: 100px;
-      height: 100px;
-      flex-shrink: 0;
-    }
   }
 }
 
-.question_box__user_info {
+.info {
   display: flex;
   justify-content: start;
   align-items: flex-start;
   margin-bottom: 12px;
 }
 
-.user_info__side {
+.side {
   display: flex;
   align-items: center;
 }
 
-.user_info__adaptive {
+.adaptive {
   margin-right: 12px;
   @media (max-width: 768px) {
     flex-direction: column;
@@ -39,7 +31,7 @@
   }
 }
 
-.user_info__text {
+.ext {
   margin-left: 12px;
   @media (max-width: 768px) {
     margin-left: 0;
@@ -48,7 +40,7 @@
   }
 }
 
-.user_info__name {
+.name {
   font-size: 20px;
   line-height: 30px;
   color: $primary-text;
@@ -60,7 +52,7 @@
   }
 }
 
-.user_info__status {
+.status {
   font-weight: 400;
   font-size: 16px;
   color: $auxiliary-text;
@@ -70,29 +62,6 @@
   }
 }
 
-.user_info__counter {
-  display: flex;
-  flex-direction: column;
-  justify-self: start;
-  align-items: center;
-
-  &:not(:last-child) {
-    margin-right: 30px;
-  }
-}
-
-.user_info__num {
-  font-size: 28px;
-  line-height: 28px;
-  font-weight: 500;
-
-  @media (max-width: 768px) {
-    font-size: 24px;
-  }
-}
-
-.user_info__string {
-  @media (max-width: 768px) {
-    font-size: 16px;
-  }
+.avatarWrapper {
+  margin-right: 16px;
 }

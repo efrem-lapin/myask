@@ -1,38 +1,17 @@
-import QuestionBox from "../QuestionBox/QuestionBox";
+import React from "react";
+import ListQuestionItem from "../ListQuestionItem/ListQuestionItem";
 
-import "./ListQuestions.scss";
 
-const ListQuestions = () => {
-  const list = [
-    {
-      name: "Влада",
-      question: "Какой ваш любимый праздник?",
-      answer: "День святого Валентина",
-    },
-    {
-      name: "Дмитрий",
-      question: "Почему листья на деревьях осенью желтеют?",
-      answer: "Потому что осень за окном!",
-    },
+import styles from "./ListQuestions.module.scss";
 
-    {
-      name: "Антон",
-      question: "Почему листья на деревьях осенью желтеют?",
-      answer: "Потому что осень за окном! Почему листья на деревьях осенью желтеют? Почему листья на деревьях осенью желтеют?",
-    },
-  ];
-
+function ListQuestions({ questions = [] }) {
   return (
-    <div className="list_questions">
-      <div className="container">
-        <div className="list_questions__inner">
-          {list.map((item) => (
-            <QuestionBox userInfo={item} />
-          ))}
-        </div>
-      </div>
+    <div className={styles.list}>
+      {questions.map((item, index) => (
+        <ListQuestionItem key={index} name={item.name} question={item.question}/> 
+      ))}
     </div>
   );
-};
+}
 
 export default ListQuestions;

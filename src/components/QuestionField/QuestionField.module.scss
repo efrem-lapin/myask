@@ -1,6 +1,6 @@
 @import "../../sass/vars.scss";
 
-.question_field {
+.field {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -15,7 +15,7 @@
   }
 }
 
-.question_field__input {
+.input {
     width: 100%;
     height: auto;
     padding: 16px;
@@ -31,7 +31,7 @@
     }
 }
 
-.question_field__button {
+.button {
     padding: 16px 24px;
     border-radius: 8px;
     font-size: 16px;

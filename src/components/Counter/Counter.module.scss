@@ -1,0 +1,26 @@
+.counter {
+  display: flex;
+  flex-direction: column;
+  justify-self: start;
+  align-items: center;
+
+  &:not(:last-child) {
+    margin-right: 30px;
+  }
+}
+
+.num {
+  font-size: 28px;
+  line-height: 28px;
+  font-weight: 500;
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
+}
+
+.string {
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+}

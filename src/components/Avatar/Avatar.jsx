@@ -1,9 +1,9 @@
-import "./Avatar.scss";
+import styles from "./Avatar.module.scss";
 
-const Avatar = ({ src = "./assets/img/default_avatar.jpg" }) => {
+const Avatar = ({ src = "./assets/img/default_avatar.jpg", size }) => {
   return (
-    <div className="avatar">
-      <img className="avatar__img" alt="аватар" src={src} />
+    <div className={styles.avatar} style={{width: `${size}px`, height: `${size}px`}}>
+      <img className={styles.img} alt="аватар" src={src} />
     </div>
   );
 };

@@ -1,0 +1,51 @@
+@import "../../sass/vars.scss";
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px; 
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $border-line;
+  }
+}
+
+.avatarWrapper {
+  margin-right: 16px;
+}
+
+.separator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.active {
+  border-radius: 6px 6px 0px 0px;
+  background-color: $border-line;
+}
+
+.animation {
+  &Active {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  &Done {
+    opacity: 1;
+    transition: all 200ms;
+    transform: translateY(0px);
+  }
+  &Exit {
+    opacity: 1;
+  }
+  &ExitActive{
+    opacity: 0;
+    transform: translateY(-50px);
+    transition: all 200ms;
+  }
+}

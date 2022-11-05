@@ -5,7 +5,7 @@ import { InputLabel } from "../InputLabel/InputLabel";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../store/slices/UserSlice";
 
-import "./SignForm.scss";
+import styles from "./SignForm.module.scss";
 
 const SignForm = ({ type }) => {
   const [name, setName] = useState("");
@@ -29,7 +29,7 @@ const SignForm = ({ type }) => {
   }
 
   return (
-    <form className="form">
+    <form className={styles.form}>
       {type === "reg" && (
         <InputLabel
           labelText="Имя"
@@ -51,7 +51,7 @@ const SignForm = ({ type }) => {
         setValue={setPassword}
       />
       <button
-        className="form__button"
+        className={styles.button}
         onClick={
           type === "login"
             ? (e) => login(e, email, password)

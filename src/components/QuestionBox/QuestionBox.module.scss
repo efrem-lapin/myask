@@ -1,0 +1,28 @@
+@import "../../sass/vars.scss";
+
+.box {
+  &:not(:last-child) {
+    margin-bottom: 24px;
+  }
+}
+
+.info {
+  display: flex;
+  justify-content: start;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.avatarWrapper {
+  margin-right: 16px;
+}
+
+.answer {
+  background-color: $light-bg;
+  padding: 12px 16px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  border-radius: 12px;
+  color: $primary-text;
+}

@@ -1,6 +1,8 @@
 import QuestionField from "../QuestionField/QuestionField";
-import "./UserBtnPanel.scss";
 import { useState } from "react";
+import cx from "classnames";
+
+import styles from "./UserBtnPanel.module.scss";
 
 const UserBtnPanel = () => {
 
@@ -8,17 +10,17 @@ const UserBtnPanel = () => {
 
   return (
     <div className="container">
-      <div className="user_btn_panel">
+      <div className={styles.panel}>
         <button 
-          className="user_btn_panel__btn user_btn_panel__btn_long"
+          className= {cx(styles.btn, styles.btnLong)} 
           onClick={() => setIsShowQF(prev => !prev)}
           >
           {isShowQF ? "Скрыть" : "Задать вопрос"}
         </button>
-        <button className="user_btn_panel__btn hide_mobile">Подписаться</button>
+        <button className={cx(styles.btn, styles.hideMobile)}>Подписаться</button>
       </div>
       {isShowQF && <QuestionField />}
-      <button className="user_btn_panel__btn show_mobile hide_desc">Подписаться</button>
+      <button className={cx(styles.btn, styles.showMobile, styles.hideDesktop)}>Подписаться</button>
     </div>
   );
 };

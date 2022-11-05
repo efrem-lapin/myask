@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 
-import "./SignUpPanel.scss";
+import styles from "./SignUpPanel.module.scss";
 
 const SignUpPanel = () => {
   return (
-    <div className="sign_up">
+    <div className={styles.signup}>
       <Link to="/sign">
-        <button className="sign_up__btn">Войти</button>
+        <button className="btn">Войти</button>
         <img
-          className="sign_up__img"
+          className={styles.img}
           src="./assets/img/default_avatar.jpg"
           alt="sing icon"
         />

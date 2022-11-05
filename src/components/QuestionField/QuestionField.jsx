@@ -1,20 +1,20 @@
 import React from "react";
-import "./QuestionField.scss"
+import styles from "./QuestionField.module.scss"
 
 const QuestionField = () => {
   
   const [question, setQuestion] = React.useState("")
 
   return (
-    <div className="question_field">
+    <div className={styles.field}>
       <input 
         type="textarea" 
-        className="question_field__input" 
+        className={styles.input} 
         onChange={(e) => setQuestion(e.target.value)} 
         value={question}
         placeholder="Задайте вопрос"
       />
-      <button className="question_field__button">Спросить</button>
+      <button className={styles.button}>Спросить</button>
     </div>
   );
 }

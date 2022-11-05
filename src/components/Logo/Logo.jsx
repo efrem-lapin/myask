@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
-import "./Logo.scss";
+import styles from "./Logo.module.scss";
 
 const Logo = () => {
-  return <Link to="/" className="logo"><img src="./assets/img/logo.png" alt="logo" className="logo__img" />MyASK.ru</Link>;
+  return (
+    <Link to="/" className={styles.logo}>
+      <img className={styles.img} src="./assets/img/logo.png" alt="логотип" />
+      MyASK.ru
+    </Link>
+  );
 };
 
 export default Logo;

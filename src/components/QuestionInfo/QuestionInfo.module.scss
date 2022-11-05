@@ -1,0 +1,21 @@
+@import "../../sass/vars.scss";
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.question {
+  font-size: 16px;
+  font-weight: 500;
+  color: $primary-text;
+  line-height: 21px;
+}

@@ -1,17 +1,18 @@
 import Avatar from "../Avatar/Avatar";
-import "./QuestionBox.scss";
+import QuestionInfo from "../QuestionInfo/QuestionInfo";
+
+import styles from "./QuestionBox.module.scss";
 
 const QuestionBox = ({ userInfo }) => {
   return (
-    <div className="question_box">
-      <div className="question_box__user_info">
-        <Avatar />
-        <div className="question_box__text">
-          <h3 className="question_box__name">{userInfo.name}</h3>
-          <p className="question_box__question">{userInfo.question}</p>
+    <div className={styles.box}>
+      <div className={styles.info}>
+        <div className={styles.avatarWrapper}>
+          <Avatar size={44} />
         </div>
+        <QuestionInfo name={userInfo.name} question={userInfo.question} />
       </div>
-      <div className="question_box__answer">{userInfo.answer}</div>
+      <div className={styles.answer}>{userInfo.answer}</div>
     </div>
   );
 };

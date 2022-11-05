@@ -1,12 +1,12 @@
 @import "../../sass/vars.scss";
 
-.sign_up {
+.signup {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.sign_up__link {
+.link {
   font-size: 14px;
   background-color: transparent;
   font-weight: 500;
@@ -27,7 +27,7 @@
   }
 }
 
-.sign_up__btn {
+.btn {
   padding: 8px 20px;
   font-size: 16px;
   background-color: $primary-second;
@@ -51,7 +51,7 @@
   }
 }
 
-.sign_up__img {
+.img {
   display: none;
   width: 32px;
   height: 32px;

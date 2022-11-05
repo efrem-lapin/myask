@@ -5,6 +5,7 @@ import InputLabel from "../components/InputLabel/InputLabel";
 const UserSettings = () => {
   return (
     <div className="container">
+      <h2 className="section__title">Настройки</h2>
       <form className="form_setting">
         <InputLabel
           labelText="Имя"

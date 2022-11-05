@@ -1,6 +1,6 @@
 @import "../../sass/vars.scss";
 
-.inputLabel {
+.label {
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -11,7 +11,7 @@
   }
 }
 
-.inputLabel__text {
+.text {
   font-weight: 400;
   font-size: 14px;
   line-height: 15px;
@@ -19,7 +19,7 @@
   color: $auxiliary-text;
 }
 
-.inputLabel__input {
+.input {
   width: 100%;
   padding: 16px;
   font-size: 16px;

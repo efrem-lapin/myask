@@ -1,13 +1,13 @@
 import React from 'react'
 
-import "./InputLabel.scss";
+import styles from "./InputLabel.module.scss";
 
 export const InputLabel = ({labelText, type, placeholder, setValue}) => {
   return (
-    <label className="inputLabel">
-      <span className="inputLabel__text">{labelText}</span>
+    <label className={styles.label}>
+      <span className={styles.text}>{labelText}</span>
       <input
-        className="inputLabel__input"
+      className={styles.input}
         type={type}
         placeholder={placeholder}
         onChange={(e) => setValue(e.target.value)}

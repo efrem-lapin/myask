@@ -1,0 +1,51 @@
+@import "../../sass/vars.scss";
+
+.menu {
+  position: absolute;
+  top: 55px;
+  right: 0;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0px 0px 32px 9px rgba(34, 60, 80, 0.2);
+  z-index: 1;
+
+  &Item {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 27px;
+    transition: all 0.3s ease;
+    color: $primary-text;
+
+    path {
+      transition: fill 0.3s ease;
+    }
+
+    &:hover {
+      color: $secondary;
+
+      path {
+        fill: $secondary;
+      }
+    }
+
+    a {
+      color: inherit;
+    }
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 12px;
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: 8px;
+}
