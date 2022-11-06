@@ -1,12 +1,14 @@
 import QuestionField from "../QuestionField/QuestionField";
 import { useState } from "react";
 import cx from "classnames";
+import IconLib from "../../services/icons";
 
 import styles from "./UserBtnPanel.module.scss";
 
 const UserBtnPanel = () => {
 
   const [isShowQF, setIsShowQF] = useState(false)
+  const icons = new IconLib();
 
   return (
     <div className="container">

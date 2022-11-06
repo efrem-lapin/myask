@@ -9,12 +9,15 @@ const UserInfo = ({ user }) => {
     name: "Имя Пользователя",
     status: "Тут пользователь будет устанавливать статус",
   };
+
+  console.log(user)
+
   return (
     <div className="container">
       <div className={styles.userInfo}>
         <div className={cx(styles.side, styles.adaptive)}>
           <div className={styles.avatarWrapper}>
-            <Avatar size={75} />
+            <Avatar size={75} src={user.avatar}/>
           </div>
           <div className={styles.text}>
             <h3 className={styles.name}>{user?.username || defaultUser.name}</h3>

@@ -28,6 +28,7 @@
   @media (max-width: 768px) {
     flex-direction: column;
     margin-right: 0;
+    margin-bottom: 20px;
   }
 }
 
@@ -49,6 +50,7 @@
   @media (max-width: 768px) {
     margin-bottom: 4px;
     font-size: 22px;
+    text-align: center;
   }
 }
 
@@ -59,9 +61,17 @@
 
   @media (max-width: 768px) {
     font-size: 14px;
+    text-align: center;
   }
 }
 
 .avatarWrapper {
   margin-right: 16px;
+  border: 3px solid $border-line;
+  border-radius: 25%;
+
+  @media (max-width: 768px) {
+    margin-right: 0;
+    margin-bottom: 12px;
+  }
 }

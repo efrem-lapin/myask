@@ -1,0 +1,13 @@
+@import "../../sass/vars.scss";
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  overflow: hidden;
+  border-radius: 25%;
+
+  cursor: pointer;
+}

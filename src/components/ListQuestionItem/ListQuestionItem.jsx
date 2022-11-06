@@ -35,7 +35,7 @@ function ListQuestionItem({ name, question }) {
         }}
         in={isField}
         ref={answerFieldRef}
-        timeout={300}
+        timeout={0}
         unmountOnExit
       >
         <AnswerField close={() => setIsField(false)} ref={answerFieldRef} />

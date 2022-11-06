@@ -1,9 +1,9 @@
 @import "../../sass/vars.scss";
 
 .header {
-  height: 50px;
+  height: $header-height;
   background-color: $primary;
-  border-bottom: 1px solid #979797;
+  border-bottom: 1px solid $border-line;
 }
 
 .inner {
@@ -12,16 +12,4 @@
   align-items: center;
   height: 100%;
   position: relative;
-}
-
-.btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 35px;
-  height: 35px;
-  overflow: hidden;
-
-  cursor: pointer;
-
 }

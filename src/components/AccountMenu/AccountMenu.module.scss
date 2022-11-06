@@ -39,6 +39,11 @@
   align-items: center;
   justify-content: flex-start;
   padding: 10px 12px;
+
+  
+  @media (max-width: 768px) {
+      padding: 16px 18px;
+  }
 }
 
 .icon {

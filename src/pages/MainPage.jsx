@@ -1,11 +1,17 @@
+import { Link } from "react-router-dom";
+import Logo from "../components/Logo/Logo";
+
 const MainPage = () => {
   return (
-    <div className="container">
-      <h2 className="main__title">Добро пожаловать!</h2>
-      <p className="main__parag">Это сайт-клон популярного приложения ASK.FM</p>
-      <p className="main__parag">
-        Если вы тут впервые - пройдите регистрацию и задавайте вопросы
-      </p>
+    <div className="mainPage">
+      <div className="container">
+        <div className="mainPageInner">
+          <div className="logoWrapper">
+            <Logo />
+          </div>
+          <Link className="mainPageBtn" to="/sign">Войти или зарегистрироваться</Link>
+        </div>
+      </div>
     </div>
   );
 };
