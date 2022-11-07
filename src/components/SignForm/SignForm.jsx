@@ -21,10 +21,10 @@ const SignForm = ({ type }) => {
   };
 
   async function login(e, email, password) {
-    const resId = await loginUser(e, email, password);
-    if (resId) {
-      dispatch(setUser({ id: resId }));
-      nav(`/user${resId}`);
+    const res = await loginUser(e, email, password);
+    if (res) {
+      dispatch(setUser(res));
+      nav(`/user${res.id}`);
     }
   }
 

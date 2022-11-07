@@ -30,7 +30,7 @@ export const loginUser = async (e, email, password) => {
       );
 
       localStorage.setItem('token', response.data.accessToken);
-      return response.data.id;
+      return response.data;
     } catch (error) {
       console.error(error);
     }

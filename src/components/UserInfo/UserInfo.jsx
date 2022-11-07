@@ -10,8 +10,6 @@ const UserInfo = ({ user }) => {
     status: "Тут пользователь будет устанавливать статус",
   };
 
-  console.log(user)
-
   return (
     <div className="container">
       <div className={styles.userInfo}>

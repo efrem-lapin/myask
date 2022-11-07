@@ -7,8 +7,8 @@ const ListAnswers = ({questions}) => {
     <div className={styles.list}>
       <div className="container">
         <div className={styles.inner}>
-          {questions.map((item) => (
-            <QuestionBox userInfo={item} key={item.name}/>
+          {questions.map((item, index) => (
+            <QuestionBox userInfo={item} key={index}/>
           ))}
         </div>
       </div>

@@ -3,10 +3,13 @@ import Avatar from "../Avatar/Avatar";
 import AccountMenu from "../AccountMenu/AccountMenu";
 
 import styles from "./AccountButton.module.scss";
+import { useSelector } from "react-redux";
 
 function AccountButton() {
   const [isDrop, setISDrop] = useState(false);
   const menuRef = useRef(null);
+
+  const img =useSelector(state => state.user.avatar);
 
   function clickOutside(e) {
     const path = e.path || (e.composedPath && e.composedPath());
@@ -29,7 +32,7 @@ function AccountButton() {
   return (
     <>
       <button className={styles.btn} onClick={toggleList} ref={menuRef}>
-        <Avatar size={35} />
+        <Avatar size={35} src={img}/>
       </button>
       {isDrop && <AccountMenu />}
     </>

@@ -1,26 +1,19 @@
+import axios from "axios";
+import React from "react";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import ListQuestions from "../components/ListQuestions/ListQuestions";
 import Spinner from "../components/Spinner/Spinner";
 
 const MyQuestion = () => {
-  const list = [
-    {
-      name: "Влада",
-      question: "Какой ваш любимый праздник?",
-      answer: "День святого Валентина",
-    },
-    {
-      name: "Дмитрий",
-      question: "Почему листья на деревьях осенью желтеют?",
-      answer: "Потому что осень за окном!",
-    },
+  const [list, setList] = useState([]);
+  const id = useSelector(state => state.user.id);
 
-    {
-      name: "Антон",
-      question: "Почему листья на деревьях осенью желтеют?",
-      answer:
-        "Потому что осень за окном! Почему листья на деревьях осенью желтеют? Почему листья на деревьях осенью желтеют?",
-    },
-  ];
+  React.useEffect(() => {
+    axios.get(`${process.env.REACT_APP_HOST}/api/questions${id}`)
+      .then(res => setList(res.data))
+  });
+
   return (
     <section>
       <div className="container">

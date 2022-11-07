@@ -67,7 +67,7 @@ const UserPage = (props) => {
       ) : (
         <>
           <UserInfo user={user} />
-          <UserBtnPanel />
+          <UserBtnPanel id={id}/>
           <h2 className="section__title">Ответы:</h2>
           <ListAnswers questions={list} />
         </>

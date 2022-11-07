@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./Avatar.module.scss";
 
 const Avatar = ({ src = "./assets/img/default_avatar.jpg", size }) => {
-  // const base64 = window.btoa(src);
   const newSRC = `data:image/jpg;base64,${src}`;
   
   return (

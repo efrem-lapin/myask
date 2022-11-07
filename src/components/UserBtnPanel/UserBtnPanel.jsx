@@ -5,7 +5,7 @@ import IconLib from "../../services/icons";
 
 import styles from "./UserBtnPanel.module.scss";
 
-const UserBtnPanel = () => {
+const UserBtnPanel = ({ id }) => {
 
   const [isShowQF, setIsShowQF] = useState(false)
   const icons = new IconLib();
@@ -21,7 +21,7 @@ const UserBtnPanel = () => {
         </button>
         <button className={cx(styles.btn, styles.hideMobile)}>Подписаться</button>
       </div>
-      {isShowQF && <QuestionField />}
+      {isShowQF && <QuestionField answerer={id}/>}
       <button className={cx(styles.btn, styles.showMobile, styles.hideDesktop)}>Подписаться</button>
     </div>
   );

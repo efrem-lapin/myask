@@ -6,7 +6,7 @@ const SignUpPanel = () => {
   return (
     <div className={styles.signup}>
       <Link to="/sign">
-        <button className="btn">Войти</button>
+        <button className={styles.btn}>Войти</button>
         <img
           className={styles.img}
           src="./assets/img/default_avatar.jpg"

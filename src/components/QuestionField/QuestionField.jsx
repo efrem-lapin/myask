@@ -1,22 +1,33 @@
+import axios from "axios";
 import React from "react";
-import styles from "./QuestionField.module.scss"
+import { useSelector } from "react-redux";
+import styles from "./QuestionField.module.scss";
 
-const QuestionField = () => {
-  
-  const [question, setQuestion] = React.useState("")
+const QuestionField = ({ answerer }) => {
+  const [question, setQuestion] = React.useState("");
+  const questioner = useSelector((state) => state.user);
+
+  function postQuestion() {
+    axios.post("http://localhost:3001/api/ask", {
+      questioner: questioner.name,
+      avatar: questioner.avatar,
+      question,
+      answerer,
+    }).then(res => alert(res.data.message));
+  }
 
   return (
     <div className={styles.field}>
-      <input 
-        type="textarea" 
-        className={styles.input} 
-        onChange={(e) => setQuestion(e.target.value)} 
+      <input
+        type="textarea"
+        className={styles.input}
+        onChange={(e) => setQuestion(e.target.value)}
         value={question}
         placeholder="Задайте вопрос"
       />
-      <button className={styles.button}>Спросить</button>
+      <button className={styles.button} onClick={postQuestion}>Спросить</button>
     </div>
   );
-}
+};
 
-export default QuestionField
+export default QuestionField;
