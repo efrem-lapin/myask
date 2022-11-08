@@ -9,8 +9,7 @@ const QuestionField = ({ answerer }) => {
 
   function postQuestion() {
     axios.post("http://localhost:3001/api/ask", {
-      questioner: questioner.name,
-      avatar: questioner.avatar,
+      questioner: questioner.id,
       question,
       answerer,
     }).then(res => alert(res.data.message));

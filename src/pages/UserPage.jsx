@@ -4,59 +4,26 @@ import ListAnswers from "../components/ListAnswers/ListAnswers";
 import UserBtnPanel from "../components/UserBtnPanel/UserBtnPanel";
 import UserInfo from "../components/UserInfo/UserInfo";
 import Spinner from "../components/Spinner/Spinner";
+import axios from "axios";
+import { useSelector } from "react-redux";
+import { setUser } from "../store/slices/UserSlice";
 
 const UserPage = (props) => {
-  const [user, setUser] = React.useState({});
+  const user = useSelector(state => state.user);
   const [isLoading, setIsLoading] = React.useState(true);
+  const [listAnswers, setListAnswers] = React.useState([]);
 
   const params = useParams();
-  const id = props.id || params.id;
-
-  const list = [
-    {
-      name: "Влада",
-      question: "Какой ваш любимый праздник?",
-      answer: "День святого Валентина",
-    },
-    {
-      name: "Дмитрий",
-      question: "Почему листья на деревьях осенью желтеют?",
-      answer: "Потому что осень за окном!",
-    },
-
-    {
-      name: "Антон",
-      question: "Почему листья на деревьях осенью желтеют?",
-      answer:
-        "Потому что осень за окном! Почему листья на деревьях осенью желтеют? Почему листья на деревьях осенью желтеют?",
-    },
-
-    {
-      name: "Антон",
-      question: "Почему листья на деревьях осенью желтеют?",
-      answer:
-        "Потому что осень за окном! Почему листья на деревьях осенью желтеют? Почему листья на деревьях осенью желтеют?",
-    },
-
-    {
-      name: "Антон",
-      question: "Почему листья на деревьях осенью желтеют?",
-      answer:
-        "Потому что осень за окном! Почему листья на деревьях осенью желтеют? Почему листья на деревьях осенью желтеют?",
-    },
-
-    {
-      name: "Антон",
-      question: "Почему листья на деревьях осенью желтеют?",
-      answer:
-        "Потому что осень за окном! Почему листья на деревьях осенью желтеют? Почему листья на деревьях осенью желтеют?",
-    },
-  ];
+  const id = user.id || props.id || params.id;
 
   React.useEffect(() => {
-    fetch(`${process.env.REACT_APP_HOST}/api/user${id}`)
-      .then((data) => data.json())
-      .then((data) => setUser(data[0]))
+    axios
+      .get(`${process.env.REACT_APP_HOST}/api/user${id}`)
+      .then((res) => setUser({...res.data}));
+
+    axios
+      .get(`${process.env.REACT_APP_HOST}/api/answers${id}`)
+      .then((res) => setListAnswers(res.data))
       .then(() => setIsLoading(false));
   }, []);
 
@@ -67,9 +34,9 @@ const UserPage = (props) => {
       ) : (
         <>
           <UserInfo user={user} />
-          <UserBtnPanel id={id}/>
+          <UserBtnPanel id={id} />
           <h2 className="section__title">Ответы:</h2>
-          <ListAnswers questions={list} />
+          <ListAnswers questions={listAnswers} />
         </>
       )}
     </div>

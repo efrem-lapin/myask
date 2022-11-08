@@ -12,7 +12,7 @@ const MyQuestion = () => {
   React.useEffect(() => {
     axios.get(`${process.env.REACT_APP_HOST}/api/questions${id}`)
       .then(res => setList(res.data))
-  });
+  }, []);
 
   return (
     <section>

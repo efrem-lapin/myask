@@ -6,7 +6,7 @@ import Avatar from "../Avatar/Avatar";
 
 import styles from "./ListQuestionItem.module.scss";
 
-function ListQuestionItem({ name, question }) {
+function ListQuestionItem({ name, question, idQuestion }) {
   const [isField, setIsField] = useState(false);
   const answerFieldRef = React.useRef();
 
@@ -38,7 +38,7 @@ function ListQuestionItem({ name, question }) {
         timeout={0}
         unmountOnExit
       >
-        <AnswerField close={() => setIsField(false)} ref={answerFieldRef} />
+        <AnswerField close={() => setIsField(false)} ref={answerFieldRef} idQuestion={idQuestion} />
       </CSSTransition>
     </>
   );
