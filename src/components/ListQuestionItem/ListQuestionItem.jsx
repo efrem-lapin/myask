@@ -3,26 +3,24 @@ import { CSSTransition } from "react-transition-group";
 import AnswerField from "../AnswerField/AnswerField";
 import QuestionInfo from "../QuestionInfo/QuestionInfo";
 import Avatar from "../Avatar/Avatar";
-
 import styles from "./ListQuestionItem.module.scss";
+import cx from "classnames";
 
-function ListQuestionItem({ name, question, idQuestion }) {
+function ListQuestionItem({ username, question, id, avatar }) {
   const [isField, setIsField] = useState(false);
-  const answerFieldRef = React.useRef();
+  const answerFieldRef = React.useRef(null);
 
   return (
-    <>
+    <div className={styles.listItem}>
       <div
-        className={
-          isField ? `${styles.wrapper} ${styles.active}` : styles.wrapper
-        }
+        className={isField ? cx(styles.wrapper, styles.active) : styles.wrapper}
         onClick={() => setIsField((prev) => !prev)}
       >
         <div className={styles.separator}>
           <div className={styles.avatarWrapper}>
-            <Avatar size={44} />
+            <Avatar size={44} src={avatar} />
           </div>
-          <QuestionInfo name={name} question={question} />
+          <QuestionInfo name={username} question={question} />
         </div>
       </div>
 
@@ -35,12 +33,16 @@ function ListQuestionItem({ name, question, idQuestion }) {
         }}
         in={isField}
         ref={answerFieldRef}
-        timeout={0}
+        timeout={300}
         unmountOnExit
       >
-        <AnswerField close={() => setIsField(false)} ref={answerFieldRef} idQuestion={idQuestion} />
+        <AnswerField
+          close={() => setIsField(false)}
+          ref={answerFieldRef}
+          idQuestion={id}
+        />
       </CSSTransition>
-    </>
+    </div>
   );
 }
 

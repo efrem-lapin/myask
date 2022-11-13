@@ -1,15 +1,14 @@
 import { Link } from "react-router-dom";
+import BlockGreeting from "../components/BlockGreeting/BlockGreeting";
 import Logo from "../components/Logo/Logo";
 
 const MainPage = () => {
   return (
-    <div className="mainPage">
+    <div className="mainPage page">
       <div className="container">
         <div className="mainPageInner">
-          <div className="logoWrapper">
-            <Logo />
-          </div>
-          <Link className="mainPageBtn" to="/sign">Войти или зарегистрироваться</Link>
+          <BlockGreeting />
+          <Link className="mainPageBtn" to="/sign">Войти</Link>
         </div>
       </div>
     </div>

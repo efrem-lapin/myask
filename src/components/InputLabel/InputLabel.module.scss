@@ -3,7 +3,7 @@
 .label {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 100%;
   margin-bottom: 16px;
 
   @media (max-width: 768px) {
@@ -12,11 +12,11 @@
 }
 
 .text {
-  font-weight: 400;
+  font-weight: 600;
   font-size: 14px;
   line-height: 15px;
   margin-bottom: 6px;
-  color: $auxiliary-text;
+  color: $primary;
 }
 
 .input {
@@ -27,7 +27,7 @@
   background-color: $light-bg;
   border: 1px solid $border-line;
   border-radius: 8px;
-  color: $auxiliary-text;
+  color: $primary;
 
   &::placeholder {
     color: $placeholder-text;

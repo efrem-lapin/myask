@@ -6,11 +6,13 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../../store/slices/UserSlice";
 
 import styles from "./SignForm.module.scss";
+import Spinner from "../Spinner/Spinner";
 
 const SignForm = ({ type }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const dispatch = useDispatch();
   const nav = useNavigate();
@@ -19,17 +21,27 @@ const SignForm = ({ type }) => {
     reg: "Зарегистрироваться",
     login: "Войти",
   };
-
   async function login(e, email, password) {
+    setIsLoading(true);
     const res = await loginUser(e, email, password);
     if (res) {
+      setIsLoading(false);
+      window.localStorage.setItem("token", res.token.accessToken);
       dispatch(setUser(res));
-      nav(`/user${res.id}`);
+      nav(`/my`);
     }
   }
 
+  async function registration(e, name, email, password) {
+    setIsLoading(true);
+    const res = await regUser(e, name, email, password);// Тут нужно будет вернуть пользователя и записать его сессию
+    if (res) {
+      setIsLoading(false);
+    }
+  }
   return (
     <form className={styles.form}>
+      {isLoading && <div className={styles.loader}><Spinner /></div>}
       {type === "reg" && (
         <InputLabel
           labelText="Имя"
@@ -55,7 +67,7 @@ const SignForm = ({ type }) => {
         onClick={
           type === "login"
             ? (e) => login(e, email, password)
-            : (e) => regUser(e, name, email, password)
+            : (e) => registration(e, name, email, password)
         }
       >
         {textButton[type]}

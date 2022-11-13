@@ -12,7 +12,7 @@ export const regUser = async (e, username, email, password) => {
       }
     );
 
-    alert(response.data.message);
+    return response;
   } catch (error) {
     console.error(error);
   }

@@ -1,10 +1,22 @@
 @import "../../sass/vars.scss";
+@import "../../sass/mixins.scss";
 
 .form {
+  @include boxShadow;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  width: 50%;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 }
 
 .button {
@@ -18,4 +30,16 @@
   @media (max-width: 768px) {
     width: 100%;
   }
+}
+
+.loader {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  transform: translate(-20px, -20px);
+  background-color: #00000020;
+  backdrop-filter: blur(0.5px);
 }

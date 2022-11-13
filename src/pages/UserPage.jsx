@@ -1,45 +1,48 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import ListAnswers from "../components/ListAnswers/ListAnswers";
-import UserBtnPanel from "../components/UserBtnPanel/UserBtnPanel";
-import UserInfo from "../components/UserInfo/UserInfo";
-import Spinner from "../components/Spinner/Spinner";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import UserHeader from "../components/UserHeader/UserHeader";
+import UserContent from "../components/UserContent/UserContent";
 import { useSelector } from "react-redux";
-import { setUser } from "../store/slices/UserSlice";
+import UserPageSkeleton from "../components/UserPageSkeleton/UserPageSkeleton";
 
-const UserPage = (props) => {
-  const user = useSelector(state => state.user);
+const UserPage = () => {
+  const [user, setUser] = React.useState({});
   const [isLoading, setIsLoading] = React.useState(true);
   const [listAnswers, setListAnswers] = React.useState([]);
+  const nav = useNavigate();
+  const myId = useSelector(state => state.user.id);
 
   const params = useParams();
-  const id = user.id || props.id || params.id;
+  const id = params.id;
+
+  function checkUser(data) {
+    if (data?.id) setUser(data);
+    else nav("/main");
+  }
 
   React.useEffect(() => {
+    if (myId === Number(id)) nav("/my");
+
     axios
       .get(`${process.env.REACT_APP_HOST}/api/user${id}`)
-      .then((res) => setUser({...res.data}));
+      .then((res) => checkUser(res.data[0]));
 
     axios
       .get(`${process.env.REACT_APP_HOST}/api/answers${id}`)
       .then((res) => setListAnswers(res.data))
       .then(() => setIsLoading(false));
-  }, []);
+  }, [id]);
 
   return (
-    <div className="container">
-      {isLoading ? (
-        <Spinner />
-      ) : (
+    <>
+      {isLoading ? <UserPageSkeleton /> : (
         <>
-          <UserInfo user={user} />
-          <UserBtnPanel id={id} />
-          <h2 className="section__title">Ответы:</h2>
-          <ListAnswers questions={listAnswers} />
+          <UserHeader user={user} id={id} btns amountAnswers={listAnswers.length} />
+          <UserContent listAnswers={listAnswers} title="Ответы" warningText="У пользователя нет ответов"/>
         </>
       )}
-    </div>
+    </>
   );
 };
 

@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 const initialState = {
   id: null,
@@ -7,6 +8,15 @@ const initialState = {
   status: null,
   avatar: null,
 };
+
+const fetchUser = createAsyncThunk("user/fetchUser", async function () {
+  const response = await axios.get(`${process.env.REACT_APP_HOST}/refresh}`, {
+    withCredentials: true,
+  });
+  const data = await response.json();
+
+  return data;
+});
 
 const UserSlice = createSlice({
   name: "user",
@@ -26,6 +36,23 @@ const UserSlice = createSlice({
       state.username = null;
       state.status = null;
       state.avatar = null;
+    },
+  },
+
+  extraReducers: {
+    [fetchUser.pending]: (state, action) => {
+      //
+    },
+    [fetchUser.fulfilled]: (state, action) => {
+      try {
+        window.localStorage.setItem("token", action.payload.token);
+        setUser(action.payload.user);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [fetchUser.rejected]: (state, action) => {
+      //
     },
   },
 });

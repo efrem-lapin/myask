@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Avatar from "../Avatar/Avatar";
 import QuestionInfo from "../QuestionInfo/QuestionInfo";
 
@@ -8,9 +9,11 @@ const QuestionBox = ({ userInfo }) => {
     <div className={styles.box}>
       <div className={styles.info}>
         <div className={styles.avatarWrapper}>
-          <Avatar size={44} />
+          <Link to={`/user${userInfo.questioner}`}>
+            <Avatar size={44} src={userInfo.avatar} />
+          </Link>
         </div>
-        <QuestionInfo name={userInfo.name} question={userInfo.question} />
+        <QuestionInfo name={userInfo.username} question={userInfo.question} link={`/user${userInfo.questioner}`}/>
       </div>
       <div className={styles.answer}>{userInfo.answer}</div>
     </div>

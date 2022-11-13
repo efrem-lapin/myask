@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px; 
+  padding: 12px;
   border-radius: 6px;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -31,21 +31,31 @@
 
 .animation {
   &Active {
-    opacity: 0;
-    transform: translateY(-50px);
+    animation: drawer 0.3s ease;
   }
 
   &Done {
-    opacity: 1;
-    transition: all 200ms;
-    transform: translateY(0px);
+    // empty
   }
+
   &Exit {
-    opacity: 1;
-  }
-  &ExitActive{
+    animation: drawer 0.3s ease reverse;
     opacity: 0;
-    transform: translateY(-50px);
-    transition: all 200ms;
+  }
+
+  &ExitActive {
+    // empty
+  }
+}
+
+@keyframes drawer {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
   }
 }

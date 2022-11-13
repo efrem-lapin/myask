@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import Avatar from "../Avatar/Avatar";
 import AccountMenu from "../AccountMenu/AccountMenu";
+import { CSSTransition } from "react-transition-group";
 
 import styles from "./AccountButton.module.scss";
 import { useSelector } from "react-redux";
@@ -9,7 +10,7 @@ function AccountButton() {
   const [isDrop, setISDrop] = useState(false);
   const menuRef = useRef(null);
 
-  const img =useSelector(state => state.user.avatar);
+  const img = useSelector((state) => state.user.avatar);
 
   function clickOutside(e) {
     const path = e.path || (e.composedPath && e.composedPath());
@@ -32,9 +33,22 @@ function AccountButton() {
   return (
     <>
       <button className={styles.btn} onClick={toggleList} ref={menuRef}>
-        <Avatar size={35} src={img}/>
+        <Avatar size={35} src={img} />
       </button>
-      {isDrop && <AccountMenu />}
+      <CSSTransition
+        in={isDrop}
+        timeout={300}
+        mountOnEnter
+        unmountOnExit
+        classNames={{
+          enterActive: styles.animationActive,
+          enterDone: styles.animationDone,
+          exitActive: styles.animationExit,
+          exitDone: styles.animationExitActive,
+        }}
+      >
+        <AccountMenu />
+      </CSSTransition>
     </>
   );
 }
