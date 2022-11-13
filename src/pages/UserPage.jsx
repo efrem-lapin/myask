@@ -38,7 +38,7 @@ const UserPage = () => {
     <>
       {isLoading ? <UserPageSkeleton /> : (
         <>
-          <UserHeader user={user} id={id} btns amountAnswers={listAnswers.length} />
+          <UserHeader user={user} id={id} btns={!!myId} amountAnswers={listAnswers.length} />
           <UserContent listAnswers={listAnswers} title="Ответы" warningText="У пользователя нет ответов"/>
         </>
       )}

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ListQuestions from "../components/ListQuestions/ListQuestions";
+import QuestionsContent from "../components/QuestionContent/QuestionsContent";
 import { setList } from "../store/slices/ListQuestions";
 
 const MyQuestion = () => {
@@ -17,23 +17,7 @@ const MyQuestion = () => {
 
   return (
     <section className="page">
-      <div className="container">
-        {listQuestions.length ? (
-          <div className="container">
-            <h2 className="section__title">Мои вопросы:</h2>
-            <ListQuestions questions={listQuestions} />
-          </div>
-        ) : (
-          <div className="section__notfound">
-            <img
-              className="section__img"
-              src="./assets/img/sad.png"
-              alt="sad smail"
-            />
-            <p className="section__descr">У вас нет вопросов</p>
-          </div>
-        )}
-      </div>
+        <QuestionsContent listQuestions={listQuestions}/>
     </section>
   );
 };

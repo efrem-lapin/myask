@@ -76,7 +76,7 @@ ol {
 
 .page {
   padding-top: 100px;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .pageContentBackround {
@@ -328,4 +328,10 @@ ol {
   @media (max-width: 450px) {
     width: 100%;
   }
+}
+
+.userSettingBackground {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 20px;
 }
