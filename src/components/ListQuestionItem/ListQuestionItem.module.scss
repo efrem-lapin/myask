@@ -59,3 +59,22 @@
     transform: translateY(0px);
   }
 }
+
+.trash {
+  padding: 2px 3px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #FF6666;
+  }
+
+  svg {
+    transform: translateY(+1px);
+  }
+}
+
+.spinnerWrapper {
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+}

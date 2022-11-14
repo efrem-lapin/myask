@@ -5,10 +5,25 @@ import QuestionInfo from "../QuestionInfo/QuestionInfo";
 import Avatar from "../Avatar/Avatar";
 import styles from "./ListQuestionItem.module.scss";
 import cx from "classnames";
+import IconLib from "../../services/icons";
+import axios from "axios";
+import Loader from "../Loader/Loader";
 
 function ListQuestionItem({ username, question, id, avatar }) {
   const [isField, setIsField] = useState(false);
   const answerFieldRef = React.useRef(null);
+  const lib = new IconLib();
+  const [isLoading, setIsLoading] = useState(false);
+
+  function removeQuestion(e) {
+    e.stopPropagation();
+
+    setIsLoading(true); 
+
+    axios.post(`${process.env.REACT_APP_HOST}/api/remove`, {
+      id
+    }).then(() => setIsLoading(false));
+  }
 
   return (
     <div className={styles.listItem}>
@@ -22,7 +37,10 @@ function ListQuestionItem({ username, question, id, avatar }) {
           </div>
           <QuestionInfo name={username} question={question} />
         </div>
-      </div>
+        {isLoading ? <Loader />: <button className={styles.trash} onClick={(e) => removeQuestion(e)}>
+          {lib.getIcon("trash")} 
+        </button>} 
+      </div> 
 
       <CSSTransition
         classNames={{
