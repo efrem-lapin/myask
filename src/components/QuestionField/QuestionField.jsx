@@ -7,7 +7,7 @@ import styles from "./QuestionField.module.scss";
 const QuestionField = ({ answerer, close }) => {
   const [question, setQuestion] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
-  const questioner = useSelector((state) => state.user);
+  const questioner = useSelector((state) => state.user.data);
 
   function postQuestion() {
     setIsLoading(true);

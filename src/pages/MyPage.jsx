@@ -1,49 +1,41 @@
 import React from "react";
-import axios from "axios";
-import { useSelector } from "react-redux";
-import ListAnswers from "../components/ListAnswers/ListAnswers";
-import UserInfo from "../components/UserInfo/UserInfo";
-import Spinner from "../components/Spinner/Spinner";
-import WarningImage from "../components/WarningImage/WarningImage";
+import { useDispatch, useSelector } from "react-redux";
 import UserContent from "../components/UserContent/UserContent";
 import UserHeader from "../components/UserHeader/UserHeader";
 import UserPageSkeleton from "../components/UserPageSkeleton/UserPageSkeleton";
-import { useNavigate } from "react-router-dom";
+import { fetchListAnswers } from "../store/slices/ListAnswersSlice";
 
 const MyPage = () => {
-  const [isLoading, setIsLoading] = React.useState(true);
-  const [listAnswers, setListAnswers] = React.useState([]);
-  const nav = useNavigate();
-
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+  const {list, status} = useSelector((state) => state.listAnswers);
 
   React.useEffect(() => {
-    if (!user.id) nav("/main");
-    axios
-      .get(`${process.env.REACT_APP_HOST}/api/answers${user.id}`)
-      .then((res) => setListAnswers(res.data))
-      .then(() => setIsLoading(false));
-  }, [user]);
+    dispatch(fetchListAnswers(user.data.id));
+  }, [user, dispatch]);
 
   return (
     <div>
-      {isLoading ? (
-        <UserPageSkeleton />
-      ) : (
-        <>
-          <UserHeader
-            user={user}
-            id={user.id}
-            btns={false}
-            amountAnswers={listAnswers.length}
-          />
-          <UserContent
-            listAnswers={listAnswers}
-            title="Мои ответы"
-            warningText="У вас нет ответов"
-          />
-        </>
-      )}
+      {
+        (status === "pending" ? (
+          <UserPageSkeleton />
+        ) : (
+          <>
+            <UserHeader
+              user={user.data}
+              id={user.data.id}
+              btns={false}
+              amountAnswers={list.length}
+            />
+            <UserContent
+              listAnswers={list}
+              title="Мои ответы"
+              warningText="У вас нет ответов"
+              isSelf={true}
+            />
+          </>
+        ))
+      }
     </div>
   );
 };

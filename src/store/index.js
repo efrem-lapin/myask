@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./slices/UserSlice";
 import popupMessageReducer from "./slices/PopupMessageSice";
-import listQuestionsReducer from "./slices/ListQuestions";
-import listAnswersReducer from "./slices/ListAnswers";
+import listQuestionsReducer from "./slices/ListQuestionsSlice";
+import listAnswersReducer from "./slices/ListAnswersSlice";
 
 export const store = configureStore({
   reducer: {

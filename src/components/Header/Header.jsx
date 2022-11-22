@@ -8,7 +8,7 @@ import styles from "./Header.module.scss";
 
 
 const Header = () => {
-  const user = useSelector((state) => state.user.id);
+  const user = useSelector((state) => state.user.data.id);
 
   return (
     <header className={styles.header}>

@@ -6,27 +6,33 @@ import styles from "./UserInfo.module.scss";
 
 const UserInfo = ({ user, amountAnswers }) => {
   const defaultUser = {
-    name: "Имя Пользователя",
+    name: "Имя",
+    surname: "Фамилия",
     status: "Тут пользователь будет устанавливать статус",
   };
 
   return (
-      <div className={styles.userInfo}>
-        <div className={cx(styles.side, styles.adaptive)}>
-          <div className={styles.avatarWrapper}>
-            <Avatar size={75} src={user.avatar}/>
-          </div>
-          <div className={styles.text}>
-            <h3 className={styles.name}>{user?.username || defaultUser.name}</h3>
-            <p className={styles.status}>{user?.status || defaultUser.status}</p>
-          </div>
+    <div className={styles.userInfo}>
+      <div className={cx(styles.side, styles.adaptive)}>
+        <div className={styles.avatarWrapper}>
+          <Avatar size={75} src={user.avatar} />
         </div>
-        <div className={styles.side}>
-          <Counter amount={amountAnswers || 0} title="ответов" />
-          <Counter amount="0" title="подписчиков" />
-          <Counter amount="0" title="лайков" />
+        <div className={styles.text}>
+          <div className="">
+            <span className={styles.name}>{user?.name || defaultUser.name}</span>
+            <span className={styles.name}>
+              {user?.surname || defaultUser.surname}
+            </span>
+          </div>
+          <p className={styles.status}>{user?.status || defaultUser.status}</p>
         </div>
       </div>
+      <div className={styles.side}>
+        <Counter amount={amountAnswers || 0} title="ответов" />
+        <Counter amount="0" title="подписчиков" />
+        <Counter amount="0" title="лайков" />
+      </div>
+    </div>
   );
 };
 

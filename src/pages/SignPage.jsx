@@ -1,13 +1,13 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import SignForm from "../components/SignForm/SignForm";
+import LoginForm from "../components/LoginForm/LoginForm";
 
 const SignPage = () => {
-  const [typeSign, setTypeSign] = useState(0);
   const userId = useSelector((state) => state.user.id);
   const nav = useNavigate();
+  const [isLoginForm, setIsLoginForm] = useState(true);
 
   useEffect(() => {
     if (userId) nav("/my");
@@ -16,26 +16,30 @@ const SignPage = () => {
   return (
     <div className="container page">
       <div className="sign">
-        <div className="sign__toggle">
-          <button
-            className={
-              !typeSign ? "sign__button sign__button_active" : "sign__button"
-            }
-            onClick={() => setTypeSign(0)}
-          >
-            Вход
-          </button>
-          <button
-            className={
-              typeSign ? "sign__button sign__button_active" : "sign__button"
-            }
-            onClick={() => setTypeSign(1)}
-          >
-            Регистрация
-          </button>
-        </div>
         <div className="sign__box">
-          {!typeSign ? <SignForm type="login" /> : <SignForm type="reg" />}
+          {isLoginForm ? (
+            <>
+              <h2 className="form__title">Вход</h2>
+              <LoginForm />
+              <button
+                onClick={() => setIsLoginForm(false)}
+                className="sign__buttom_text"
+              >
+                или зарегистрируйтесь
+              </button>
+            </>
+          ) : (
+            <>
+              <h2 className="form__title">Регистрация</h2>
+              <SignForm />
+              <button
+                onClick={() => setIsLoginForm(true)}
+                className="sign__buttom_text"
+              >
+                у вас есть аккаунт?
+              </button>
+            </>
+          )}
         </div>
       </div>
     </div>

@@ -1,30 +1,29 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { regUser } from "../../actions/user";
-import { setUser } from "../../store/slices/UserSlice";
 import InputLabel from "../InputLabel/InputLabel";
+import { loginUser } from "../../actions/user";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../store/slices/UserSlice";
 import Loader from "../Loader/Loader";
 
-import styles from "./SignForm.module.scss";
+import styles from "./LoginForm.module.scss";
 
-const SignForm = () => {
-  const [name, setName] = useState("");
+function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [surname, setSurname] = useState("");
 
   const dispatch = useDispatch();
+  const nav = useNavigate();
 
-  async function registration(e, userData) {
+  async function login(e, userData) {
     e.preventDefault();
     setIsLoading(true);
-    const res = await regUser(userData);
-
-    if (res.data) {
+    const res = await loginUser(userData);
+    if (res) {
       setIsLoading(false);
-      dispatch(setUser(res.data.user))
-      console.log(res.data.message);
+      dispatch(setUser(res.user));
+      nav(`/my`);
     }
   }
   return (
@@ -35,20 +34,8 @@ const SignForm = () => {
         </div>
       )}
       <InputLabel
-        labelText="Имя"
-        type="text"
-        placeholder="Введите имя"
-        setValue={setName}
-      />
-      <InputLabel
-        labelText="Фамилия"
-        type="text"
-        placeholder="Введите фамилию"
-        setValue={setSurname}
-      />
-      <InputLabel
         labelText="E-mail"
-        type="email"
+        type="text"
         placeholder="Введите e-mail"
         setValue={setEmail}
       />
@@ -60,12 +47,12 @@ const SignForm = () => {
       />
       <button
         className={styles.button}
-        onClick={(e) => registration(e, { name, surname, email, password })}
+        onClick={(e) => login(e, {email, password})}
       >
-        Зарегистрироваться
+        Войти
       </button>
     </form>
   );
-};
+}
 
-export default SignForm;
+export default LoginForm;

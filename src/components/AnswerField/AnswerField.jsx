@@ -1,11 +1,10 @@
-import axios from "axios";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { setMessage } from "../../store/slices/PopupMessageSice";
-import { removeQuestion } from "../../store/slices/ListQuestions";
+import { removeQuestion } from "../../store/slices/ListQuestionsSlice";
+import Spinner from "../Spinner/Spinner";
+import $api from "../../http";
 
 import styles from "./AnswerField.module.scss";
-import Spinner from "../Spinner/Spinner";
 
 const AnswerField = React.forwardRef(({ close, idQuestion }, ref) => {
   const dispatch = useDispatch();
@@ -16,19 +15,14 @@ const AnswerField = React.forwardRef(({ close, idQuestion }, ref) => {
     setAnswer(e.target.value);
   }
 
-  function remove(message) {
-    removeQuestion(idQuestion);
-    dispatch(setMessage({ message }));
-  }
-
   function postAnswer() {
     setIsLoading(true);
-    axios
+    $api
       .post(`${process.env.REACT_APP_HOST}/api/answer`, {
         answer,
         id: idQuestion,
       })
-      .then((res) => remove(res.data.message))
+      .then(() => dispatch(removeQuestion(idQuestion)))
       .then(() => setIsLoading(false))
       .then(() => close());
   }

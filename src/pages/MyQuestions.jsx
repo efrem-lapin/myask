@@ -1,23 +1,20 @@
-import axios from "axios";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import QuestionsContent from "../components/QuestionContent/QuestionsContent";
-import { setList } from "../store/slices/ListQuestions";
+import { fetchListQuestion} from "../store/slices/ListQuestionsSlice";
 
 const MyQuestion = () => {
   const dispatch = useDispatch();
   const listQuestions = useSelector((state) => state.listQuestions.list);
-  const id = useSelector((state) => state.user.id);
+  const id = useSelector((state) => state.user.data.id);
 
   React.useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_HOST}/api/questions${id}`)
-      .then((res) => dispatch(setList(res.data)));
-  }, [dispatch, id, listQuestions]);
+    dispatch(fetchListQuestion(id));
+  }, [id, dispatch]);
 
   return (
     <section className="page">
-        <QuestionsContent listQuestions={listQuestions}/>
+      <QuestionsContent listQuestions={listQuestions} />
     </section>
   );
 };

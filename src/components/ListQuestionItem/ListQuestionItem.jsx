@@ -1,28 +1,44 @@
 import React, { useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import AnswerField from "../AnswerField/AnswerField";
-import QuestionInfo from "../QuestionInfo/QuestionInfo";
-import Avatar from "../Avatar/Avatar";
-import styles from "./ListQuestionItem.module.scss";
+import QuestionBlock from "../QuestionBlock/QuestionBlock";
 import cx from "classnames";
 import IconLib from "../../services/icons";
 import axios from "axios";
 import Loader from "../Loader/Loader";
+import { removeQuestion } from "../../store/slices/ListQuestionsSlice";
+import { useDispatch } from "react-redux";
+import $api from "../../http/index";
 
-function ListQuestionItem({ username, question, id, avatar }) {
+import styles from "./ListQuestionItem.module.scss";
+import { useEffect } from "react";
+
+const ListQuestionItem = ({ questionInfo }) => {
   const [isField, setIsField] = useState(false);
+  const [profile, setProfile] = useState({});
+  const { question, questionerId, id } = questionInfo;
   const answerFieldRef = React.useRef(null);
   const lib = new IconLib();
   const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
 
-  function removeQuestion(e) {
+  useEffect(() => {
+    $api
+      .get(`${process.env.REACT_APP_HOST}/api/user/${questionerId}`)
+      .then((res) => setProfile(res.data));
+  }, [questionerId]);
+
+  function removeItem(e, id) {
     e.stopPropagation();
 
-    setIsLoading(true); 
+    setIsLoading(true);
 
-    axios.post(`${process.env.REACT_APP_HOST}/api/remove`, {
-      id
-    }).then(() => setIsLoading(false));
+    $api
+      .post(`${process.env.REACT_APP_HOST}/api/remove`, {
+        id,
+      })
+      .then(() => dispatch(removeQuestion(id)))
+      .then(() => setIsLoading(false));
   }
 
   return (
@@ -32,15 +48,24 @@ function ListQuestionItem({ username, question, id, avatar }) {
         onClick={() => setIsField((prev) => !prev)}
       >
         <div className={styles.separator}>
-          <div className={styles.avatarWrapper}>
-            <Avatar size={44} src={avatar} />
-          </div>
-          <QuestionInfo name={username} question={question} />
+          <QuestionBlock
+            avatarInfo={{ avatar: profile.avatar, id: profile.id }}
+            questionInfo={{
+              question,
+              name: profile.name,
+              surname: profile.surname,
+              id: profile.id,
+            }}
+          />
         </div>
-        {isLoading ? <Loader />: <button className={styles.trash} onClick={(e) => removeQuestion(e)}>
-          {lib.getIcon("trash")} 
-        </button>} 
-      </div> 
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <button className={styles.trash} onClick={(e) => removeItem(e, id)}>
+            {lib.getIcon("trash")}
+          </button>
+        )}
+      </div>
 
       <CSSTransition
         classNames={{
@@ -62,6 +87,6 @@ function ListQuestionItem({ username, question, id, avatar }) {
       </CSSTransition>
     </div>
   );
-}
+};
 
 export default ListQuestionItem;

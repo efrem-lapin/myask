@@ -2,20 +2,24 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-  id: null,
-  email: null,
-  username: null,
-  status: null,
-  avatar: null,
+  data: {
+    id: null,
+    email: null,
+    name: null,
+    surname: null,
+    status: null,
+    avatar: null,
+  },
+  status: "",
 };
 
-const fetchUser = createAsyncThunk("user/fetchUser", async function () {
-  const response = await axios.get(`${process.env.REACT_APP_HOST}/refresh}`, {
-    withCredentials: true,
-  });
-  const data = await response.json();
+export const fetchUser = createAsyncThunk("user/fetchUser", async () => {
+  const response = await axios.get(
+    `${process.env.REACT_APP_HOST}/api/refresh`,
+    { withCredentials: true }
+  );
 
-  return data;
+  return response.data;
 });
 
 const UserSlice = createSlice({
@@ -23,33 +27,20 @@ const UserSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action) => {
-      state.id = action.payload.id;
-      state.email = action.payload.email;
-      state.username = action.payload.username;
-      state.status = action.payload.status;
-      state.avatar = action.payload.avatar;
+      state.data = action.payload.user;
     },
 
     removeUser: (state) => {
-      state.id = null;
-      state.email = null;
-      state.username = null;
-      state.status = null;
-      state.avatar = null;
+      state.data = {};
     },
   },
 
   extraReducers: {
-    [fetchUser.pending]: (state, action) => {
-      //
+    [fetchUser.pending]: (state) => {
+      state.status = "pending";
     },
     [fetchUser.fulfilled]: (state, action) => {
-      try {
-        window.localStorage.setItem("token", action.payload.token);
-        setUser(action.payload.user);
-      } catch (error) {
-        console.log(error);
-      }
+      state.data = action.payload.user;
     },
     [fetchUser.rejected]: (state, action) => {
       //

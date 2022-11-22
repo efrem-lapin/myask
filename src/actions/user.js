@@ -1,16 +1,8 @@
-import axios from "axios";
+import $api from "../http/index";
 
-export const regUser = async (e, username, email, password) => {
-  e.preventDefault();
+export const regUser = async (userData) => {
   try {
-    const response = await axios.post(
-      `${process.env.REACT_APP_HOST}/api/reg`,
-      {
-        username,
-        email,
-        password,
-      }
-    );
+    const response = await $api.post("/api/registration", userData);
 
     return response;
   } catch (error) {
@@ -18,20 +10,11 @@ export const regUser = async (e, username, email, password) => {
   }
 };
 
-export const loginUser = async (e, email, password) => {
-  e.preventDefault();
-    try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_HOST}/api/login`,
-        {
-          email,
-          password,
-        }
-      );
-
-      localStorage.setItem('token', response.data.accessToken);
-      return response.data;
-    } catch (error) {
-      console.error(error);
-    }
-  };
+export const loginUser = async (user) => {
+  try {
+    const response = await $api.post("/api/login", user);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};

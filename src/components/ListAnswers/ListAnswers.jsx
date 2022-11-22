@@ -1,13 +1,13 @@
-import QuestionBox from "../QuestionBox/QuestionBox";
+import AnswerBlock from "../AnswerBlock/AnswerBlock";
 
 import styles from "./ListAnswers.module.scss";
 
-const ListAnswers = ({ questions }) => {
+const ListAnswers = ({ list, isSelf }) => {
   return (
     <div className={styles.list}>
       <div className={styles.inner}>
-        {questions.map((item, index) => (
-          <QuestionBox userInfo={item} key={index} />
+        {list.map((answer, index) => (
+          <AnswerBlock answer={answer} key={index} isSelf={isSelf}/>
         ))}
       </div>
     </div>

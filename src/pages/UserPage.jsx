@@ -11,7 +11,7 @@ const UserPage = () => {
   const [isLoading, setIsLoading] = React.useState(true);
   const [listAnswers, setListAnswers] = React.useState([]);
   const nav = useNavigate();
-  const myId = useSelector(state => state.user.id);
+  const myId = useSelector((state) => state.user.data.id);
 
   const params = useParams();
   const id = params.id;
@@ -22,24 +22,36 @@ const UserPage = () => {
   }
 
   React.useEffect(() => {
-    if (myId === Number(id)) nav("/my");
+    if (Number(myId) === Number(id)) nav("/my");
 
     axios
-      .get(`${process.env.REACT_APP_HOST}/api/user${id}`)
-      .then((res) => checkUser(res.data[0]));
+      .get(`${process.env.REACT_APP_HOST}/api/user/${id}`)
+      .then((res) => checkUser(res.data));
 
     axios
-      .get(`${process.env.REACT_APP_HOST}/api/answers${id}`)
+      .get(`${process.env.REACT_APP_HOST}/api/answers/${id}`)
       .then((res) => setListAnswers(res.data))
       .then(() => setIsLoading(false));
   }, [id]);
 
   return (
     <>
-      {isLoading ? <UserPageSkeleton /> : (
+      {isLoading ? (
+        <UserPageSkeleton />
+      ) : (
         <>
-          <UserHeader user={user} id={id} btns={!!myId} amountAnswers={listAnswers.length} />
-          <UserContent listAnswers={listAnswers} title="Ответы" warningText="У пользователя нет ответов"/>
+          <UserHeader
+            user={user}
+            id={id}
+            btns={!!myId}
+            amountAnswers={listAnswers.length}
+          />
+          <UserContent
+            listAnswers={listAnswers}
+            title="Ответы"
+            warningText="У пользователя нет ответов"
+            isSelf={false}
+          />
         </>
       )}
     </>

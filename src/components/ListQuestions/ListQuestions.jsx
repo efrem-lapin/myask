@@ -7,8 +7,8 @@ import styles from "./ListQuestions.module.scss";
 function ListQuestions({ questions = [] }) {
   return (
     <div className={styles.list}>
-      {questions.map((item, index) => (
-        <ListQuestionItem key={index} {...item}/> 
+      {questions.map((question, index) => (
+        <ListQuestionItem key={index} questionInfo={question}/> 
       ))}
     </div>
   );

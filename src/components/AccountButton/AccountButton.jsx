@@ -10,7 +10,7 @@ function AccountButton() {
   const [isDrop, setISDrop] = useState(false);
   const menuRef = useRef(null);
 
-  const img = useSelector((state) => state.user.avatar);
+  const img = useSelector((state) => state.user.data.avatar);
 
   function clickOutside(e) {
     const path = e.path || (e.composedPath && e.composedPath());
