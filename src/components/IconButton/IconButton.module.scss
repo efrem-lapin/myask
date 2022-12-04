@@ -1,0 +1,41 @@
+@import "../../sass/vars.scss";
+
+.btn {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+  bottom: 5px;
+  right: 8px;
+  border-radius: 50%;
+  background-color: #ff666680;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ff6666;
+
+    svg {
+      path {
+        fill: #fff;
+      }
+    }
+  }
+
+  svg {
+    path {
+      transition: fill 0.3s ease;
+      fill: $light-bg;
+    }
+  }
+}
+.active {
+  background-color: #ff6666;
+
+  svg {
+    path {
+      fill: #fff;
+    }
+  }
+}

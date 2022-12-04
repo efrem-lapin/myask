@@ -20,7 +20,7 @@ function LoginForm() {
     e.preventDefault();
     setIsLoading(true);
     const res = await loginUser(userData);
-    if (res) {
+    if (res.status === 200) {
       setIsLoading(false);
       dispatch(setUser(res.user));
       nav(`/my`);

@@ -23,6 +23,7 @@ button {
   border: none;
   transition-duration: 0.3s;
   border-radius: 16px;
+  cursor: pointer;
 
   &:hover {
     background-color: lighten($primary, 20);
@@ -45,7 +46,7 @@ ol {
 }
 
 .container {
-  width: 754px;
+  width: 768px;
   height: 100%;
   margin: 0 auto;
 
@@ -76,6 +77,10 @@ ol {
 
 .page {
   padding-top: 100px;
+  min-height: 100vh;
+}
+
+.pageUser {
   min-height: 100vh;
 }
 
@@ -303,7 +308,6 @@ ol {
 
 .userInfoBackground {
   background: #ffffff20;
-  backdrop-filter: blur(30px);
   border-radius: 0px 0px 24px 24px;
   // padding-bottom: 26px;
   width: 100%;
@@ -349,4 +353,9 @@ ol {
   padding: 10px 0px 20px 10px;
   font-size: 28px;
   font-weight: 700;
+}
+
+.avatarWrapper {
+  width: 150px;
+  height: 150px;
 }

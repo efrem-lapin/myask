@@ -1,30 +1,26 @@
-import axios from "axios";
 import React from "react";
 import { useSelector } from "react-redux";
 import Spinner from "../Spinner/Spinner";
 import styles from "./QuestionField.module.scss";
+import { postQuestion } from "./../../actions/question";
 
 const QuestionField = ({ answerer, close }) => {
   const [question, setQuestion] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
   const questioner = useSelector((state) => state.user.data);
 
-  function postQuestion() {
+  async function sendQuestion() {
     setIsLoading(true);
-    axios
-      .post(`${process.env.REACT_APP_HOST}/api/ask`, {
-        questioner: questioner.id,
-        question,
-        answerer,
-      })
-      .then((res) => console.log(res.data.message))
-      .then(() => setIsLoading(false))
-      .then(() => close());
+    const res = await postQuestion(questioner.id, question, answerer);
+    if (res.status === 200) {
+      setIsLoading(false);
+      close();
+    }
   }
 
   return (
-    <div className="overlay">
-      <div className={styles.field}>
+    <div className={styles.overlay} onClick={close}>
+      <div className={styles.field} onClick={(e) => e.stopPropagation()}>
         {isLoading ? (
           <Spinner />
         ) : (
@@ -37,7 +33,7 @@ const QuestionField = ({ answerer, close }) => {
               placeholder="Задайте вопрос"
             />
             <div className={styles.buttons}>
-              <button className={styles.button} onClick={postQuestion}>
+              <button className={styles.button} onClick={sendQuestion}>
                 Спросить
               </button>
               <button className={styles.button} onClick={close}>

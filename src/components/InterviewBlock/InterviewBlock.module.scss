@@ -1,0 +1,8 @@
+@import "../../sass/vars.scss";
+
+.box {
+  position: relative;
+  &:not(:last-child) {
+    margin-bottom: 24px;
+  }
+}

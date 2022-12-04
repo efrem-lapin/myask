@@ -4,7 +4,7 @@ import cx from "classnames";
 
 import styles from "./UserInfo.module.scss";
 
-const UserInfo = ({ user, amountAnswers }) => {
+const UserInfo = ({ user, amountAnswers, amountSubs, amountLikes }) => {
   const defaultUser = {
     name: "Имя",
     surname: "Фамилия",
@@ -15,7 +15,7 @@ const UserInfo = ({ user, amountAnswers }) => {
     <div className={styles.userInfo}>
       <div className={cx(styles.side, styles.adaptive)}>
         <div className={styles.avatarWrapper}>
-          <Avatar size={75} src={user.avatar} />
+          <Avatar src={user.avatar} />
         </div>
         <div className={styles.text}>
           <div className="">
@@ -29,8 +29,8 @@ const UserInfo = ({ user, amountAnswers }) => {
       </div>
       <div className={styles.side}>
         <Counter amount={amountAnswers || 0} title="ответов" />
-        <Counter amount="0" title="подписчиков" />
-        <Counter amount="0" title="лайков" />
+        <Counter amount={amountSubs || 0} title="подписчиков" />
+        <Counter amount={amountLikes || 0} title="лайков" />
       </div>
     </div>
   );

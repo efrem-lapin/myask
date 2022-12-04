@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { removeQuestion } from "../../store/slices/ListQuestionsSlice";
 import Spinner from "../Spinner/Spinner";
-import $api from "../../http";
+import { postAnswer } from "../../actions/answer";
 
 import styles from "./AnswerField.module.scss";
 
@@ -15,16 +15,14 @@ const AnswerField = React.forwardRef(({ close, idQuestion }, ref) => {
     setAnswer(e.target.value);
   }
 
-  function postAnswer() {
+  async function post(answer, idQuestion) {
     setIsLoading(true);
-    $api
-      .post(`${process.env.REACT_APP_HOST}/api/answer`, {
-        answer,
-        id: idQuestion,
-      })
-      .then(() => dispatch(removeQuestion(idQuestion)))
-      .then(() => setIsLoading(false))
-      .then(() => close());
+    const res = await postAnswer(answer, idQuestion);
+    if (res.status === 200) {
+      dispatch(removeQuestion(idQuestion));
+      setIsLoading(false);
+      close();
+    }
   }
 
   return (
@@ -37,7 +35,10 @@ const AnswerField = React.forwardRef(({ close, idQuestion }, ref) => {
             className={styles.textarea}
             onChange={(e) => handleArea(e)}
           ></textarea>
-          <button className={styles.btn} onClick={postAnswer}>
+          <button
+            className={styles.btn}
+            onClick={() => post(answer, idQuestion)}
+          >
             Ответить
           </button>
         </>

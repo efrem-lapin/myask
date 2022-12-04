@@ -26,16 +26,17 @@ const UserPage = () => {
 
     axios
       .get(`${process.env.REACT_APP_HOST}/api/user/${id}`)
-      .then((res) => checkUser(res.data));
-
-    axios
-      .get(`${process.env.REACT_APP_HOST}/api/answers/${id}`)
-      .then((res) => setListAnswers(res.data))
-      .then(() => setIsLoading(false));
-  }, [id]);
+      .then((res) => checkUser(res.data))
+      .then(() => {
+        axios
+          .get(`${process.env.REACT_APP_HOST}/api/answers/${id}`)
+          .then((res) => setListAnswers(res.data))
+          .then(() => setIsLoading(false));
+      });
+  }, [id, myId]);
 
   return (
-    <>
+    <div className="pageUser">
       {isLoading ? (
         <UserPageSkeleton />
       ) : (
@@ -45,6 +46,9 @@ const UserPage = () => {
             id={id}
             btns={!!myId}
             amountAnswers={listAnswers.length}
+            subs={user.subscriptions || 0}
+            amountSubs={user.subscriptions.length}
+            amountLikes={user.likes}
           />
           <UserContent
             listAnswers={listAnswers}
@@ -54,7 +58,7 @@ const UserPage = () => {
           />
         </>
       )}
-    </>
+    </div>
   );
 };
 

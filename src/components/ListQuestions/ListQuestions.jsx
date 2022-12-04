@@ -8,7 +8,7 @@ function ListQuestions({ questions = [] }) {
   return (
     <div className={styles.list}>
       {questions.map((question, index) => (
-        <ListQuestionItem key={index} questionInfo={question}/> 
+        <ListQuestionItem key={index} question={question}/> 
       ))}
     </div>
   );

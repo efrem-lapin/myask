@@ -13,17 +13,6 @@
     background-color: $border-line;
   }
 }
-
-.avatarWrapper {
-  margin-right: 16px;
-}
-
-.separator {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .active {
   border-radius: 6px 6px 0px 0px;
   background-color: $border-line;
@@ -58,23 +47,4 @@
     opacity: 1;
     transform: translateY(0px);
   }
-}
-
-.trash {
-  padding: 2px 3px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #FF6666;
-  }
-
-  svg {
-    transform: translateY(+1px);
-  }
-}
-
-.spinnerWrapper {
-  width: 24px;
-  height: 24px;
-  overflow: hidden;
 }

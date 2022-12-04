@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import Token from './../../services/token';
 
 const initialState = {
   data: {
@@ -9,6 +10,8 @@ const initialState = {
     surname: null,
     status: null,
     avatar: null,
+    likes: null,
+    subscriptions: []
   },
   status: "",
 };
@@ -40,6 +43,7 @@ const UserSlice = createSlice({
       state.status = "pending";
     },
     [fetchUser.fulfilled]: (state, action) => {
+      Token.setToken(action.payload.token)
       state.data = action.payload.user;
     },
     [fetchUser.rejected]: (state, action) => {

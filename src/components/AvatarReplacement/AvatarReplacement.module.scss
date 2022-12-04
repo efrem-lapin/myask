@@ -1,0 +1,46 @@
+@import "../../sass/vars.scss";
+
+.avatarReplacement {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.avatarWrapper {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 12px;
+}
+
+.label {
+  padding: 12px;
+  background-color: $primary;
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 12px;
+  height: 100%;
+  cursor: pointer;
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: lighten($primary, 10);
+  }
+
+  &:active {
+    transform: scale(0.99);
+  }
+}
+
+.input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.fileName {
+  margin-bottom: 12px;
+}

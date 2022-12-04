@@ -1,4 +1,5 @@
 import axios from "axios";
+import Token from './../services/token';
 
 const $api = axios.create({
     withCredentials: true,
@@ -6,7 +7,8 @@ const $api = axios.create({
 });
 
 $api.interceptors.request.use((config) => {
-    config.headers.Authorization = `Bearer ${localStorage.getItem('tocken')}`;
+    const token = Token.getToken();
+    config.headers.Authorization = `Bearer ${token}`;
     return config;
 });
 

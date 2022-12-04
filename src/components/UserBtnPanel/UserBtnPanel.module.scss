@@ -1,4 +1,5 @@
 @import "../../sass/vars.scss";
+@import "../../sass/mixins.scss";
 
 .panel {
   display: flex;
@@ -14,6 +15,7 @@
 }
 
 .btn {
+  @include bg-button;
   padding: 12px 36px;
   background-color: $primary;
   color: $primary-oposite;
@@ -21,12 +23,7 @@
   cursor: pointer;
   font-size: 16px;
   font-weight: 400;
-  width: 50%;  background: rgb(33, 37, 41);
-  background: linear-gradient(
-    180deg,
-    rgba(33, 37, 41, 1) 0%,
-    rgba(26, 26, 27, 1) 100%
-  );
+  width: 50%;
 
   @media (max-width: 768px) {
     padding: 12px;
@@ -36,6 +33,7 @@
     border-radius: 18px 18px 24px 24px;
   }
 }
+
 
 .btnLong {
   padding: 12px 64px;
@@ -71,28 +69,18 @@
     animation: drawer 0.3s ease;
   }
 
-  &Done {
-    // empty
-  }
-
   &Exit {
     animation: drawer 0.3s ease reverse;
     opacity: 0;
-  }
-
-  &ExitActive {
-    // empty
   }
 }
 
 @keyframes drawer {
   0% {
     opacity: 0;
-    // transform: translateY(-20px);
   }
 
   100% {
     opacity: 1;
-    // transform: translateY(0px);
   }
 }

@@ -1,10 +1,22 @@
 @import "../../sass/vars.scss";
+@import "../../sass/mixins.scss";
+
+.overlay {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 99;
+  overflow-y: scroll;
+}
 
 .field {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%);
+  @include boxShadow;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -12,11 +24,13 @@
   border-radius: 16px;
   padding: 20px 12px;
   background-color: #fff;
-  margin-top: 20px;
   width: 768px;
 
   @media (max-width: 768px) {
-    margin-bottom: 24px;
+    width: 450px;
+  }
+
+  @media (max-width: 450px) {
     width: 100%;
   }
 }
@@ -41,6 +55,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 }
 
 .button {

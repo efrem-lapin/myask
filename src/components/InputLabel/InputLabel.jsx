@@ -2,7 +2,7 @@ import React from 'react'
 
 import styles from "./InputLabel.module.scss";
 
-export const InputLabel = ({labelText, type, placeholder, setValue}) => {
+export const InputLabel = ({labelText, type, placeholder, setValue, value = null}) => {
   return (
     <label className={styles.label}>
       <span className={styles.text}>{labelText}</span>
@@ -10,7 +10,8 @@ export const InputLabel = ({labelText, type, placeholder, setValue}) => {
       className={styles.input}
         type={type}
         placeholder={placeholder}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={setValue}
+        value={value}
       />
     </label>
   )

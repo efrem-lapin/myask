@@ -2,9 +2,9 @@ import React, { useState, useRef } from "react";
 import Avatar from "../Avatar/Avatar";
 import AccountMenu from "../AccountMenu/AccountMenu";
 import { CSSTransition } from "react-transition-group";
+import { useSelector } from "react-redux";
 
 import styles from "./AccountButton.module.scss";
-import { useSelector } from "react-redux";
 
 function AccountButton() {
   const [isDrop, setISDrop] = useState(false);

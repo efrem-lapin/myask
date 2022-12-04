@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { removeAnswerAction } from "../../actions/answer";
 import $api from "../../http";
 
 const initialState = {
@@ -12,6 +13,17 @@ export const fetchListQuestion = createAsyncThunk(
       `${process.env.REACT_APP_HOST}/api/questions/${userId}`
     );
 
+    return response.data;
+  }
+);
+
+export const deleteQuestion = createAsyncThunk(
+  "lsitQuestion/deleteQuestion",
+  async (id, { dispatch }) => {
+    const response = await removeAnswerAction(id);
+    if (response.statusText === "OK") {
+      dispatch(removeQuestion(id));
+    }
     return response.data;
   }
 );

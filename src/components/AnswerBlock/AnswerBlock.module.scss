@@ -1,17 +1,11 @@
 @import "../../sass/vars.scss";
 
-.box {
-  position: relative;
-  &:not(:last-child) {
-    margin-bottom: 24px;
-  }
-}
-
 .answerBlock {
   position: relative;
   overflow: hidden;
   border-radius: 32px 32px 32px 12px;
-  border-bottom: 4px solid #ADB5BD50;
+  border-bottom: 4px solid #adb5bd50;
+  margin-top: 12px;
 
   &::before {
     content: "";
@@ -62,36 +56,4 @@
   border-radius: 30px 30px 30px 12px;
   color: $primary-text;
   overflow: hidden;
-}
-
-.likeButton {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 30px;
-  width: 30px;
-  top: 8px;
-  right: 8px;
-  border-radius: 50%;
-  background-color: #FF666680;
-  cursor: pointer;
-  // border: 2px solid #00000080;
-  
-  &:hover {
-    background-color: #FF6666;
-
-    svg {
-      path {
-        fill: #fff;
-      }
-    }
-  }
-
-  svg {
-    path {
-      transition: fill 0.3s ease;
-      fill: $light-bg;
-    }
-  }
 }

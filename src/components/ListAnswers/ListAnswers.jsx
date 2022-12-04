@@ -1,4 +1,4 @@
-import AnswerBlock from "../AnswerBlock/AnswerBlock";
+import InterviewBlock from "../InterviewBlock/InterviewBlock";
 
 import styles from "./ListAnswers.module.scss";
 
@@ -7,7 +7,7 @@ const ListAnswers = ({ list, isSelf }) => {
     <div className={styles.list}>
       <div className={styles.inner}>
         {list.map((answer, index) => (
-          <AnswerBlock answer={answer} key={index} isSelf={isSelf}/>
+          <InterviewBlock answer={answer} key={index} isSelf={isSelf}/>
         ))}
       </div>
     </div>

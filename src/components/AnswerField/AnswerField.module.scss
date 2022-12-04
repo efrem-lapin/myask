@@ -2,6 +2,7 @@
 
 .field {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 12px;
@@ -17,24 +18,16 @@
 .textarea {
   padding: 4px;
   font-size: 16px;
-  width: 79%;
-  margin-right: 2%;
-
-  @media (max-width: 768px) {
-    width: 100%;
-    margin-right: 0;
-    margin-bottom: 12px;
-  }
+  width: 100%;
+  margin-bottom: 12px;
 }
 
 .btn {
-  width: 19%;
+  width: 100%;
   padding: 12px;
   border-radius: 0px;
   background-color: $primary;
   color: $primary-oposite;
-
-  @media (max-width: 768px) {
-    width: 100%;
-  }
+  cursor: pointer;
+  border-radius: 6px;
 }
