@@ -1,4 +1,3 @@
-import React from "react";
 import AvatarLink from "../AvatarLink/AvatarLink";
 import QuestionInfo from "../QuestionInfo/QuestionInfo";
 

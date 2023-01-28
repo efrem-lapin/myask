@@ -1,4 +1,3 @@
-import React from "react";
 import AnswerSkeleton from "../AnswerSkeleton/AnswerSkeleton";
 
 import styles from "./UserPageSkeleton.module.scss";

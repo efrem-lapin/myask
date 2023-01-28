@@ -8,6 +8,10 @@ class Token {
     static getToken() {
         return this.token;
     }
+
+    static clearToken() {
+        this.token = "";
+    }
 }
 
 export default Token;

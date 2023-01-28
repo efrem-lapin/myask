@@ -2,9 +2,9 @@ import React from 'react'
 
 import styles from "./Loader.module.scss";
 
-function Loader() {
+function Loader({ size="24px" }) {
   return (
-    <span className={styles.loader}></span>
+    <span style={{height: size, width: size}} className={styles.loader}></span>
   )
 }
 

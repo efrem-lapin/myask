@@ -1,8 +1,7 @@
-import React from "react";
 import IconLib from "../../services/icons";
+import classNames from "classnames";
 
 import styles from "./IconButton.module.scss";
-import classNames from "classnames";
 
 function IconButton({ icon, clickCallback, active }) {
   const lib = new IconLib();

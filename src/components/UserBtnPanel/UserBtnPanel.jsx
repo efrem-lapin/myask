@@ -1,16 +1,18 @@
 import QuestionField from "../QuestionField/QuestionField";
 import { useState, useEffect } from "react";
 import $api from "../../http";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import cx from "classnames";
 import { CSSTransition } from "react-transition-group";
+import { addSubs, removeSubs } from "../../store/slices/UserSlice";
 
 import styles from "./UserBtnPanel.module.scss";
 
 const UserBtnPanel = ({ id, subs }) => {
   const [isShowQF, setIsShowQF] = useState(false);
-  const myId = useSelector((state) => state.user.data.id);
+  const myId = useSelector((state) => state.auth.data.id);
   const [isSubs, setIsSubs] = useState(false);
+  const dispatch = useDispatch();
 
   async function subscribe(subscriber, user) {
     const res = await $api.post(`${process.env.REACT_APP_HOST}/api/subscribe`, {
@@ -18,7 +20,11 @@ const UserBtnPanel = ({ id, subs }) => {
       user,
     });
 
-    if (res.status === 200) setIsSubs((prev) => !prev);
+    if (res.status === 200) {
+      if (isSubs) dispatch(removeSubs(subscriber));
+      else dispatch(addSubs(subscriber));
+      setIsSubs((prev) => !prev);
+    }
   }
 
   useEffect(() => {
@@ -29,10 +35,10 @@ const UserBtnPanel = ({ id, subs }) => {
 
   return (
     <>
-      <div className="mobileContainer">
+      <div className="container">
         <div className={styles.panel}>
           <button
-            className={cx(styles.btn, styles.btnLong)}
+            className={cx(styles.btn, styles.btnSecond)}
             onClick={() => setIsShowQF((prev) => !prev)}
           >
             Задать вопрос

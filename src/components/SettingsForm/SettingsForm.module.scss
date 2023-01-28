@@ -1,0 +1,22 @@
+@import "../../sass/vars.scss";
+
+.form {
+  // margin-bottom: 20px;
+}
+
+.button {
+  padding: 12px;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 12px;
+  cursor: pointer;
+  color: $btn-clr-secondary;
+  background-color: $btn-bg-secondary;
+}
+
+.background {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 20px;
+}

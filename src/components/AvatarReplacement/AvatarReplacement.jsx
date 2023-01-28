@@ -1,11 +1,11 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Avatar from "../Avatar/Avatar";
 import { useSelector } from "react-redux";
 
 import styles from "./AvatarReplacement.module.scss";
 
 const AvatarReplacement = ({ callback }) => {
-  const avatar = useSelector((state) => state.user.data.avatar);
+  const avatar = useSelector((state) => state.auth.data.avatar);
   const [image, setImage] = useState({});
   const [imgURL, setImgURL] = useState();
   const fileReader = new FileReader();
@@ -37,7 +37,7 @@ const AvatarReplacement = ({ callback }) => {
           id="avatar"
           onChange={fileHandler}
         />
-        <span className={styles.span}>Загрузите изображение</span>
+        <span className={styles.span}>Загрузить аватар</span>
       </label>
     </div>
   );

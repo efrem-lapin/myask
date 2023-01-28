@@ -1,12 +1,1 @@
-@import "../../sass/mixins.scss";
-.title {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
 
-.background {
-    @include boxShadow;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 20px;
-}

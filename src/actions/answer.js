@@ -1,6 +1,6 @@
 import $api from "../http";
 
-export const likeAnswer = async (answerId, likerId, answererId) => {
+export const likeAnswerAction = async (answerId, likerId, answererId) => {
   return await $api.post(`${process.env.REACT_APP_HOST}/api/putlike`, {
     questionId: answerId,
     likerId,
@@ -23,4 +23,8 @@ export const postAnswer = async (answer, idQuestion) => {
     answer,
     id: idQuestion,
   });
+};
+
+export const getAnswersById = async (id) => {
+  return $api.get(`${process.env.REACT_APP_HOST}/api/answers/${id}`);
 };

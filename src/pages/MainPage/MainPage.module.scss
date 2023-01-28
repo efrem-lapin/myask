@@ -1,0 +1,17 @@
+@import "../../sass/vars.scss";
+
+.page {
+  margin-top: $header-height;
+  min-height: 100vh;
+  //height: calc(100vh - $header-height);
+  padding-top: 80px;
+  height: 100vh;
+}
+
+.pageInner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}

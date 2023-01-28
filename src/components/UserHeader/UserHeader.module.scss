@@ -1,0 +1,16 @@
+.userHeader {
+  position: relative;
+  //background-color: red;
+}
+
+.background {
+  //   background-color: #fff;
+}
+.backgroundImage {
+  position: absolute;
+  z-index: -1;
+  height: 50%;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 0px 0px 6px 6px;
+}

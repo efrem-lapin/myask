@@ -1,36 +1,31 @@
-import Avatar from "../Avatar/Avatar";
-import Counter from "../Counter/Counter";
+import StatusBlock from "../StatusBlock/StatusBlock";
 import cx from "classnames";
+import UserAvatar from "../UserAvatar/UserAvatar";
+import CounterPanel from "../CounterPanel/CounterPanel";
 
 import styles from "./UserInfo.module.scss";
 
 const UserInfo = ({ user, amountAnswers, amountSubs, amountLikes }) => {
-  const defaultUser = {
-    name: "Имя",
-    surname: "Фамилия",
-    status: "Тут пользователь будет устанавливать статус",
-  };
-
   return (
     <div className={styles.userInfo}>
       <div className={cx(styles.side, styles.adaptive)}>
-        <div className={styles.avatarWrapper}>
-          <Avatar src={user.avatar} />
-        </div>
-        <div className={styles.text}>
-          <div className="">
-            <span className={styles.name}>{user?.name || defaultUser.name}</span>
-            <span className={styles.name}>
-              {user?.surname || defaultUser.surname}
-            </span>
+        <UserAvatar avatar={user.avatar} />
+        <div className="container">
+          <div className={styles.info}>
+            <div className={styles.text}>
+              <div className={styles.nameBlock}>
+                <span className={styles.name}>{user?.name}</span>
+                <span className={styles.name}>{user?.surname}</span>
+              </div>
+              <StatusBlock status={user.status} id={user.id} />
+            </div>
+            <CounterPanel
+              answers={amountAnswers}
+              subs={amountSubs}
+              likes={amountLikes}
+            />
           </div>
-          <p className={styles.status}>{user?.status || defaultUser.status}</p>
         </div>
-      </div>
-      <div className={styles.side}>
-        <Counter amount={amountAnswers || 0} title="ответов" />
-        <Counter amount={amountSubs || 0} title="подписчиков" />
-        <Counter amount={amountLikes || 0} title="лайков" />
       </div>
     </div>
   );

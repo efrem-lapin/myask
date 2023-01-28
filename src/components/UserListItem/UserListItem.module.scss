@@ -1,0 +1,28 @@
+.user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.nameWrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  margin-right: 4px;
+}
+
+.avatarWrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 12px;
+}

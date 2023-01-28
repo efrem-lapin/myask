@@ -4,20 +4,29 @@ import UserContent from "../components/UserContent/UserContent";
 import UserHeader from "../components/UserHeader/UserHeader";
 import UserPageSkeleton from "../components/UserPageSkeleton/UserPageSkeleton";
 import { fetchListAnswers } from "../store/slices/ListAnswersSlice";
+import { useNavigate } from "react-router-dom";
+import Loader from "../components/Loader/Loader";
 
 const MyPage = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const { list, status } = useSelector((state) => state.listAnswers);
+  const nav = useNavigate();
 
   React.useEffect(() => {
     dispatch(fetchListAnswers(user.data.id));
   }, [user, dispatch]);
 
+  React.useEffect(() => {
+    if (status === "rejected") {
+      nav("/sign");
+    }
+  }, [nav, status, user]);
+
   return (
     <div className="pageUser">
       {status === "pending" ? (
-        <UserPageSkeleton />
+        <Loader />
       ) : (
         <>
           <UserHeader

@@ -1,11 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-import Token from './../../services/token';
+import { getUserById } from './../../actions/user';
 
 const initialState = {
   data: {
     id: null,
-    email: null,
     name: null,
     surname: null,
     status: null,
@@ -16,42 +14,42 @@ const initialState = {
   status: "",
 };
 
-export const fetchUser = createAsyncThunk("user/fetchUser", async () => {
-  const response = await axios.get(
-    `${process.env.REACT_APP_HOST}/api/refresh`,
-    { withCredentials: true }
-  );
-
-  return response.data;
+export const fetchUser = createAsyncThunk("user/fetchUser", async (id) => {
+  return await getUserById(id);
 });
 
 const UserSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setUser: (state, action) => {
-      state.data = action.payload.user;
+    incrLike: (state) => {
+      state.data.likes = state.data.likes + 1;
     },
-
-    removeUser: (state) => {
-      state.data = {};
+    decrLike: (state) => {
+      state.data.likes = state.data.likes - 1;
     },
+    addSubs: (state, action) => {
+      state.data.subscriptions.push({subscriber: action.payload})
+    },
+    removeSubs: (state, action) => {
+      state.data.subscriptions = state.data.subscriptions.filter(subs => subs.subscriber !== action.payload);
+    }
   },
-
   extraReducers: {
     [fetchUser.pending]: (state) => {
       state.status = "pending";
     },
+
     [fetchUser.fulfilled]: (state, action) => {
-      Token.setToken(action.payload.token)
-      state.data = action.payload.user;
+      state.data   =  action.payload.data;
+      state.status = "fulfield";
     },
-    [fetchUser.rejected]: (state, action) => {
-      //
-    },
-  },
+    [fetchUser.rejected]: (state) => {
+      state.status = "rejected";
+    }
+  }
 });
 
-export const { setUser, removeUser } = UserSlice.actions;
+export const { decrLike, incrLike, addSubs, removeSubs } = UserSlice.actions;
 
 export default UserSlice.reducer;

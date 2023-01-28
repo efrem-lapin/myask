@@ -1,0 +1,42 @@
+.box {
+  margin-bottom: 12px;
+
+  @media (max-width: 450px) {
+    margin-bottom: 10px;
+  }
+}
+
+.input {
+  border: none;
+  border-bottom: 2px solid #323232;
+  outline: none;
+  padding: 10px;
+  font-size: 20px;
+  height: 56px;
+  line-height: 20px;
+  text-align: center;
+  background-color: transparent;
+  color: #fff;
+
+  @media (max-width: 768px) {
+    height: 46px;
+    font-size: 20px;
+  }
+
+  @media (max-width: 450px) {
+    border-bottom: 1px solid #323232;
+  }
+}
+
+.status {
+  cursor: pointer;
+  font-size: 20px;
+  font-style: italic;
+  padding-bottom: 4px;
+  padding: 16px;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+    padding: 12px;
+  }
+}

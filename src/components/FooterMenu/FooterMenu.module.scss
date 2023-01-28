@@ -1,0 +1,35 @@
+.menu {
+  width: 100%;
+  height: 100%;
+  //padding: 0px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item {
+  height: 100%;
+  width: 100%;
+  //border-radius: 6px;
+
+  &:hover {
+    background-color: #2c2c2c;
+  }
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  svg {
+    position: relative;
+  }
+}
+
+.wrapper {
+  position: relative;
+}
+

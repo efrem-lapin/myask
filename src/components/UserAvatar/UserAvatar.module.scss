@@ -1,0 +1,47 @@
+@import "../../sass/vars.scss";
+
+.userAvatar {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  margin-bottom: 16px;
+
+  @media (max-width: 450px) {
+    height: 210px;
+  }
+}
+
+.background {
+  width: 100%;
+  height: 160px;
+  background-color: $box-bg-primary;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  //background-image: url('https://www.freecodecamp.org/news/content/images/2022/09/jonatan-pie-3l3RwQdHRHg-unsplash.jpg');
+  border-radius: 0px 0px 12px 12px;
+  filter: blur(30px);
+  border-bottom: 2px solid #000;
+
+  @media (max-width: 450px) {
+    border-radius: 0px 0px 0px 0px;
+    height: 140px;
+  }
+}
+
+.avatarWrapper {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid $btn-bg-primary;
+  border-radius: 50%;
+  height: 160px;
+  width: 160px;
+  overflow: hidden;
+  
+  @media (max-width: 450px) {
+    height: 140px;
+    width: 140px;
+  }
+}

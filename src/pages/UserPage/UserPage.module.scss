@@ -1,0 +1,19 @@
+@import "../../sass/mixins.scss";
+
+.page {
+  min-height: 100vh;
+}
+
+.loaderWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.signButton {
+  @include button;
+  @include buttonSecondary;
+  margin: 12px 0px 24px;
+}

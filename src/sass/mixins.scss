@@ -1,3 +1,5 @@
+@import "./vars.scss";
+
 @mixin placeholder {
   position: relative;
   overflow: hidden;
@@ -20,14 +22,32 @@
   }
 }
 
+/*  BUTTONS MIXINS  */
 @mixin button {
-  
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+  font-size: 18px;
+  border-radius: 12px;
+  padding: 12px;
+  cursor: pointer;
+}
+
+@mixin buttonPrimary {
+  background-color: $btn-bg-primary;
+  color: $btn-clr-primary;
+}
+
+@mixin buttonSecondary {
+  background-color: $btn-bg-secondary;
+  color: $btn-clr-secondary;
 }
 
 @mixin boxShadow {
-  -webkit-box-shadow: 0px 0px 49px 29px rgba(34, 60, 80, 0.2);
-  -moz-box-shadow: 0px 0px 49px 29px rgba(34, 60, 80, 0.2);
-  box-shadow: 0px 0px 49px 29px rgba(34, 60, 80, 0.2);
+  -webkit-box-shadow: 0px 0px 49px 29px rgba(5, 5, 5, 0.2);
+  -moz-box-shadow: 0px 0px 49px 29px rgba(17, 17, 17, 0.2);
+  box-shadow: 0px 0px 49px 29px rgba(3, 3, 3, 0.2);
 }
 
 @mixin bg-button {

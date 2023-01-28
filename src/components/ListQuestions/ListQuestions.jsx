@@ -1,6 +1,4 @@
-import React from "react";
 import ListQuestionItem from "../ListQuestionItem/ListQuestionItem";
-
 
 import styles from "./ListQuestions.module.scss";
 

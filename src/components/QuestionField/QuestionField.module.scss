@@ -10,7 +10,7 @@
   width: 100vw;
   top: 0;
   left: 0;
-  background-color: rgba(0,0,0,0.7);
+  background-color: rgba(0, 0, 0, 0.801);
   z-index: 99;
   overflow-y: scroll;
 }
@@ -21,9 +21,9 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  border-radius: 16px;
+  border-radius: 12px;
   padding: 20px 12px;
-  background-color: #fff;
+  background-color: #2b2c2c;
   width: 768px;
 
   @media (max-width: 768px) {
@@ -44,10 +44,15 @@
     font-size: 16px;
     line-height: 24px;
     border: 1px solid $placeholder-text;
-    background-color: #F8F9FA;
+    background-color: $btn-bg-primary;
+    color: #fff;
 
     ::placeholder {
       color: $placeholder-text;
+    }
+
+    @media (max-width: 768px) {
+      outline: none;
     }
 }
 
@@ -66,8 +71,8 @@
     border-radius: 8px;
     font-size: 16px;
     font-weight: 500;
-    color: $primary-oposite;
-    background-color: $primary;
+    color: #fff;
+    background-color: $btn-bg-secondary;
     color: white;
     cursor: pointer;
     margin-right: 8px;

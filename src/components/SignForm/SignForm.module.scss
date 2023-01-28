@@ -8,9 +8,9 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  background-color: #fff;
+  background-color: $box-bg-primary;
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 12px;
   width: 50%;
   overflow: hidden;
 
@@ -20,17 +20,9 @@
 }
 
 .button {
+  @include button;
+  @include buttonSecondary;
   margin-top: 10px;
-  padding: 12px 24px;
-  font-size: 18px;
-  cursor: pointer;
-  border-radius: 6px;
-  background-color: $primary;
-  color: $primary-oposite;
-
-  @media (max-width: 768px) {
-    width: 100%;
-  }
 }
 
 .loader {
@@ -43,4 +35,46 @@
   transform: translate(-20px, -20px);
   background-color: #00000020;
   backdrop-filter: blur(0.5px);
+}
+
+.errorMessage {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  transform: translate(-20px, -20px);
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 500;
+  color: #000;
+  background-color: #b9464642;
+  padding: 20px;
+  animation: show 0.3s ease;
+}
+
+.doneMessage {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  transform: translate(-20px, -20px);
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 500;
+  color: #000;
+  background-color: #46b96c42;
+  padding: 20px;
+  animation: show 0.3s ease;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

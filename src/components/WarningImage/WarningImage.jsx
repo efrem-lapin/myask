@@ -1,14 +1,14 @@
-import React from "react";
+import styles from "./WarningImage.module.scss";
 
 function WarningImage({ text }) {
   return (
-    <div className="section__notfound">
+    <div className={styles.box}>
       <img
-        className="section__img"
-        src="./assets/img/sad.png"
+        className={styles.img}
+        src="./assets/img/sad.svg"
         alt="sad smail"
       />
-      <p className="section__descr">{text}</p>
+      <p className={styles.text}>{text}</p>
     </div>
   );
 }

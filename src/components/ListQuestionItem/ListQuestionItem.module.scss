@@ -1,21 +1,42 @@
 @import "../../sass/vars.scss";
+@import "../../sass/mixins.scss";
+
+.listItem {
+  background-color: $box-bg-primary;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.btn {
+  @include button;
+  @include buttonSecondary;
+  padding: 6px;
+  font-size: 16spx;
+
+  @media (max-width: 768px) {
+    &:hover {
+      outline: none;
+      user-select: none;
+    }
+  }
+}
 
 .wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px;
+  padding: 10px;
   border-radius: 6px;
   transition: all 0.3s ease;
   cursor: pointer;
 
   &:hover {
-    background-color: $border-line;
+    //background-color: $border-line;
   }
 }
 .active {
   border-radius: 6px 6px 0px 0px;
-  background-color: $border-line;
+  background-color: $box-bg-primary;
 }
 
 .animation {

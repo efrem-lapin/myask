@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { removeAnswerAction } from "../../actions/answer";
-import $api from "../../http";
+import { likeAnswerAction, getAnswersById } from './../../actions/answer';
 
 const initialState = {
   list: [],
@@ -10,21 +10,28 @@ const initialState = {
 export const fetchListAnswers = createAsyncThunk(
   "listAnswers/fetchListAnswers",
   async (userId) => {
-    const response = await $api.get(
-      `${process.env.REACT_APP_HOST}/api/answers/${userId}`
-    );
-
+    const response = await getAnswersById(userId);
     return response.data;
   }
 );
 
-export const deleteAnswer = createAsyncThunk("listlistAnswers/", async (id, {dispatch}) => {
+export const fetchDeleteAnswer = createAsyncThunk("listAnswers/fetchDeleteAnswer", async (id, {dispatch}) => {
   const response = await removeAnswerAction(id);
   if (response.statusText === "OK") {
     dispatch(removeAnswer(id))
   }
   return response.data;
-})
+});
+
+export const fetchLikeAnswer = createAsyncThunk("listAnswers/fetchLikeAnswer", async (like, {dispatch}) => {
+  const {answerId, likerId, answererId} = like;
+  const response = await likeAnswerAction(answerId, likerId, answererId);
+  if (response.status === 200) {
+    const response = await getAnswersById(answererId);
+    return response.data;
+  }
+  return response.data;
+});
 
 const ListAnswersSlice = createSlice({
   name: "listAnswers",
@@ -37,6 +44,9 @@ const ListAnswersSlice = createSlice({
       const id = action.payload;
       state.list = state.list.filter((answer) => answer.id !== id);
     },
+    likeAnswer: (state, action) => {
+      
+    }
   },
 
   extraReducers: {
@@ -47,9 +57,13 @@ const ListAnswersSlice = createSlice({
       state.list = action.payload;
       state.status = "fulfilled"
     },
+    [fetchLikeAnswer.fulfilled]: (state, action) => {
+      state.list = action.payload;
+      state.status = "fulfilled"
+    },
   },
 });
 
-export const { setListAnswers, removeAnswer } = ListAnswersSlice.actions;
+export const { setListAnswers, removeAnswer, likeAnswer } = ListAnswersSlice.actions;
 
 export default ListAnswersSlice.reducer;

@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
+import authReducer from "./slices/AuthSlice";
 import userReducer from "./slices/UserSlice";
-import popupMessageReducer from "./slices/PopupMessageSice";
 import listQuestionsReducer from "./slices/ListQuestionsSlice";
 import listAnswersReducer from "./slices/ListAnswersSlice";
 
 export const store = configureStore({
   reducer: {
+    auth: authReducer,
     user: userReducer,
-    popupMessage: popupMessageReducer,
     listQuestions: listQuestionsReducer,
     listAnswers: listAnswersReducer,
   },

@@ -1,57 +1,87 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import InputLabel from "../InputLabel/InputLabel";
 import { loginUser } from "../../actions/user";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setUser } from "../../store/slices/UserSlice";
 import Loader from "../Loader/Loader";
+import Token from "./../../services/token";
+import { Formik } from "formik";
+import { validateLogin } from "../../services/validate";
+import { fetchAuth } from './../../store/slices/AuthSlice';
 
 import styles from "./LoginForm.module.scss";
 
 function LoginForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const dispatch = useDispatch();
   const nav = useNavigate();
 
-  async function login(e, userData) {
-    e.preventDefault();
+  async function login(values) {
     setIsLoading(true);
-    const res = await loginUser(userData);
-    if (res.status === 200) {
+
+    const res = await loginUser(values);
+
+    if (res.error) {
       setIsLoading(false);
-      dispatch(setUser(res.user));
-      nav(`/my`);
+      setErrorMessage(res.error);
+
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 1000);
+    }
+
+    if (res.user.id) {
+      setIsLoading(false);
+      Token.setToken(res.token);
+      dispatch(fetchAuth());
+      nav(`/id${res.user.id}`);
     }
   }
+
   return (
-    <form className={styles.form}>
-      {isLoading && (
-        <div className={styles.loader}>
-          <Loader />
-        </div>
+    <Formik initialValues={{ email: "", password: "" }} validate={validateLogin} onSubmit={login}>
+      {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
+        <form className={styles.form} onSubmit={handleSubmit}>
+          {isLoading && (
+            <div className={styles.loader}>
+              <Loader />
+            </div>
+          )}
+          {errorMessage && <div className={styles.errorMessage}>{errorMessage}</div>}
+          <InputLabel
+            labelText="Email"
+            placeholder="Введите email"
+            type="email"
+            name="email"
+            value={values.email}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
+            error={errors.email}
+            touched={touched.email}
+          />
+          <InputLabel
+            labelText="Пароль"
+            placeholder="Введите пароль"
+            type="password"
+            name="password"
+            value={values.password}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
+            error={errors.password}
+            touched={touched.password}
+          />
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className={styles.button}
+          >
+            Войти
+          </button>
+        </form>
       )}
-      <InputLabel
-        labelText="E-mail"
-        type="text"
-        placeholder="Введите e-mail"
-        setValue={setEmail}
-      />
-      <InputLabel
-        labelText="Пароль"
-        type="password"
-        placeholder="Введите пароль"
-        setValue={setPassword}
-      />
-      <button
-        className={styles.button}
-        onClick={(e) => login(e, {email, password})}
-      >
-        Войти
-      </button>
-    </form>
+    </Formik>
   );
 }
 

@@ -1,3 +1,4 @@
+/* COMMON VARS */
 $primary: #212529;
 $primary-second: #C7C9F6;
 $primary-light: #F0F0F0;
@@ -8,11 +9,33 @@ $border-line: #e8e8e8;
 $light-bg: #E9ECEF;
 $secondary: #565CE3;
 
+$box-bg-primary: #2c2c2c;
+
+$input-bg-primary: #454747;
+$input-border-primary: #1b1d1f;
+
+$body-bg-primary: #1b1d1f;
+$border-line-primary: #424141;
+
 /*  TEXT  */
 $primary-text: #212529;
+$secondary-text: #FFFFFF;
 $auxiliary-text: #ADB5BD;
 $placeholder-text: #ADB5BD;
 
+$txt-clr-primary: #FFFFFF;
+
 
 /*  SIZE  */
-$header-height: 60px;
+$header-height: 50px;
+
+/*  BUTTON  */
+$btn-bg-primary:     #2b2c2c;
+$btn-bg-secondary:   #454747;
+$btn-clr-primary:    #ffffff;
+$btn-clr-secondary: #ffffff;
+$btn-br-primary:     transparent;
+$btn-br-secondary:   transparent;
+$btn-bg-hover:       #6f7272;
+$btn-clr-hover:      #ffffff;
+$btn-br-hover:       #051a2e;

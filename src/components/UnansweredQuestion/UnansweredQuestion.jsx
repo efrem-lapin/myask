@@ -1,4 +1,3 @@
-import React from "react";
 import QuestionBlock from "../QuestionBlock/QuestionBlock";
 import IconButton from "../IconButton/IconButton";
 import { useDispatch } from 'react-redux';
@@ -22,7 +21,7 @@ const UnansweredQuestion = ({question}) => {
           questionInfo={question}
         />
       </div>
-      <IconButton icon="cross" clickCallback={(e) => removeQuestion(e)} />
+      <IconButton icon="trash" clickCallback={(e) => removeQuestion(e)} />
     </div>
   );
 };

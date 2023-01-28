@@ -1,15 +1,16 @@
-import React from "react";
+import { useState, forwardRef} from "react";
 import { useDispatch } from "react-redux";
 import { removeQuestion } from "../../store/slices/ListQuestionsSlice";
-import Spinner from "../Spinner/Spinner";
 import { postAnswer } from "../../actions/answer";
+import QuestionBlock from "./../QuestionBlock/QuestionBlock";
+import Loader from './../Loader/Loader';
 
 import styles from "./AnswerField.module.scss";
 
-const AnswerField = React.forwardRef(({ close, idQuestion }, ref) => {
+const AnswerField = forwardRef(({ close, idQuestion, question }, ref) => {
   const dispatch = useDispatch();
-  const [answer, setAnswer] = React.useState("");
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [answer, setAnswer] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   function handleArea(e) {
     setAnswer(e.target.value);
@@ -26,23 +27,35 @@ const AnswerField = React.forwardRef(({ close, idQuestion }, ref) => {
   }
 
   return (
-    <div className={styles.field} ref={ref}>
-      {isLoading ? (
-        <Spinner />
-      ) : (
-        <>
-          <textarea
-            className={styles.textarea}
-            onChange={(e) => handleArea(e)}
-          ></textarea>
-          <button
-            className={styles.btn}
-            onClick={() => post(answer, idQuestion)}
-          >
-            Ответить
-          </button>
-        </>
-      )}
+    <div className={styles.overlay} onClick={close}>
+      <div
+        className={styles.field}
+        ref={ref}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <>
+            <div className={styles.question}>
+              <QuestionBlock
+                avatarInfo={question.questionerData}
+                questionInfo={question}
+              />
+            </div>
+            <textarea
+              className={styles.textarea}
+              onChange={(e) => handleArea(e)}
+            ></textarea>
+            <button
+              className={styles.btn}
+              onClick={() => post(answer, idQuestion)}
+            >
+              Ответить
+            </button>
+          </>
+        )}
+      </div>
     </div>
   );
 });

@@ -5,45 +5,50 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 0px 20px 16px;
+  flex-direction: column;
+  margin-bottom: 28px;
 
   @media (max-width: 768px) {
-    flex-direction: column;
-    padding: 0 0 20px;
-    margin-bottom: 12px;
+    margin-bottom: 20px;
   }
 }
 
 .btn {
-  @include bg-button;
+  border-radius: 12px;
   padding: 12px 36px;
-  background-color: $primary;
-  color: $primary-oposite;
-  border-radius: 4px 12px 24px 4px;
   cursor: pointer;
+  width: 100%;
+  background-color: $btn-bg-primary;
+  color: $btn-clr-primary;
   font-size: 16px;
-  font-weight: 400;
-  width: 50%;
+  font-weight: 500;
+  margin-bottom: 8px;
 
   @media (max-width: 768px) {
     padding: 12px;
     width: 100%;
-    margin-right: 0;
     margin-bottom: 8px;
-    border-radius: 18px 18px 24px 24px;
+    outline: none;
+  }
+
+  &:hover {
+    background-color: $btn-bg-hover;
+    color: $btn-clr-hover;
   }
 }
 
 
-.btnLong {
+.btnSecond {
   padding: 12px 64px;
-  border-radius: 12px 4px 4px 24px;
   margin-right: 2px;
+
+  background-color: $btn-bg-secondary;
+  color: $btn-clr-secondary;
+  border: 1px solid $btn-br-secondary;
 
   @media (max-width: 768px) {
     margin-right: 0px;
     padding: 12px;
-    border-radius: 18px 18px 24px 24px;
     width: 100%;
   }
 }

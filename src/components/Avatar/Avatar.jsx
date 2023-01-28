@@ -1,12 +1,11 @@
-import React from "react";
 import styles from "./Avatar.module.scss";
 
-const Avatar = ({ src = "./assets/img/default_avatar.jpg"}) => {
+const Avatar = ({ src }) => {
   return (
     <div
       className={styles.avatar}
       style={{
-        backgroundImage: `url(${src})`,
+        backgroundImage: `url(${src ? src : "./assets/img/default_avatar.jpg"})`,
       }}
     ></div>
   );
